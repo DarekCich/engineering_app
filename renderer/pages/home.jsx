@@ -12,6 +12,14 @@ function Home() {
         <div className={styles.bar}>
 
         </div>
+        <div className={styles.content}>
+          <div className={styles.folderSite}>
+          
+          </div>
+          <div className={styles.itemsSite}>
+            
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );
