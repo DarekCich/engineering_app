@@ -41,46 +41,6 @@
     border-radius: 15px
 }
 
-.itemsSite{
-    box-sizing: border-box;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.fileList{
-    box-sizing: border-box;
-    width: 100%;
-    height: 40%;
-    background: #3E3E3E;
-    border: solid 2px #858585;
-    border-radius: 15px
-}
-.fileDetails{
-    
-    box-sizing: border-box;
-    width: 100%;
-    height: 50%;
-    background: #3E3E3E;
-    border: solid 2px #858585;
-    border-radius: 15px;
-    display: flex;
-    overflow: hidden;
-}
-.fileDetail{
-    box-sizing: border-box;
-    height: 100%;
-    width: 50%;
-}
-.fileView{
-    box-sizing: border-box;
-    padding: 5%;
-    height: 100%;
-    width: 50%;
-    border-right: solid 2px #858585;
-}
 @media only screen and (max-width: 800px) {
     .bar{
         box-sizing: border-box;

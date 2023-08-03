@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../../Style/home.module.css'
+import ItemsSite from '../components/itemsSite'
 function Home() {
   return (
     <React.Fragment>
@@ -14,14 +15,7 @@ function Home() {
         <div className={styles.content}>
           <div className={styles.folderSite}>
           </div>
-          <div className={styles.itemsSite}>
-            <div className={styles.fileList}>
-            </div>
-            <div className={styles.fileDetails}>
-              <div className={styles.fileView}></div>
-              <div className={styles.fileDetail}></div>
-            </div>
-          </div>
+          <ItemsSite/>
         </div>
       </div>
     </React.Fragment>
