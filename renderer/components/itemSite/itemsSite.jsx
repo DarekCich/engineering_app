@@ -1,4 +1,4 @@
-import styles from '../../Style/itemsSite.module.css'
+import styles from './itemsSite.module.css'
 function ItemsSite(){
 
     return(

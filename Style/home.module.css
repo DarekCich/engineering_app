@@ -32,53 +32,6 @@
     justify-content: space-between;
 }
 
-.folderSite{
-    box-sizing: border-box;
-    height: 100%;
-    width: 40%;
-    background: #3E3E3E;
-    border: solid 2px #858585;
-    border-radius: 15px;
-    
-}
-.folderBar{
-    width: 100%;
-    height: 6%;
-    border-radius: 15px 15px 5px 5px;
-    background: #494949;
-    border-bottom: solid 2px #858585;
-    display: flex;
-}
-.folderButtons{
-    height: 100%;
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    justify-content: right;
-}
-.iconsFolderButtons{
-    width: 30px;
-    height: 30px;
-    filter: invert(100);
-}
-.folderButton{
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    margin: 0 8px 0 8px;
-    border: 0;
-    background: 000000;
-}
-.folderName{
-    box-sizing: border-box;
-    width: 60%;
-    height: 100%;
-    display: flex;
-    padding: 2% 0 0 2%;
-    color: aliceblue;
-    font-size: 150%;
-}
 @media only screen and (max-width: 800px) {
     .bar{
         box-sizing: border-box;
@@ -91,69 +44,16 @@
         border-bottom: solid 2px #858585;
         border-radius: 0 0 5px 5px;
     }
-    
     .content{
         box-sizing: border-box;
-        width:  90%;
+        width:  95vw;
         height: 90%;
-        margin: 4% 5%;
+        margin: 2vh 2.5vw;
         background: #363636;
         border-radius: 15px;
         border: solid 2px #858585;
-        padding: 4% 3%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    
-    .folderSite{
-        box-sizing: border-box;
-        height: 45%;
-        width: 100%;
-        background: #3E3E3E;
-        border: solid 2px #858585;
-        border-radius: 15px
-    }
-    
-    .itemsSite{
-        box-sizing: border-box;
-        width: 100%;
-        height: 50%;
+        padding: 2% 3%;
         display: flex;
         flex-direction: column;
     }
-    
-    .fileList{
-        box-sizing: border-box;
-        width: 100%;
-        height: 45%;
-        background: #3E3E3E;
-        border: solid 2px #858585;
-        border-radius: 15px
-    }
-    .fileDetails{
-        
-        box-sizing: border-box;
-        width: 100%;
-        height: 50%;
-        background: #3E3E3E;
-        border: solid 2px #858585;
-        border-radius: 15px;
-        display: flex;
-        overflow: hidden;
-    }
-    .fileDetail{
-        box-sizing: border-box;
-        height: 100%;
-        width: 50%;
-    }
-    .fileView{
-        box-sizing: border-box;
-        padding: 5%;
-        height: 100%;
-        width: 50%;
-        border-right: solid 2px #858585;
-    }
-
-
  }
