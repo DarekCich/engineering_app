@@ -1,11 +1,13 @@
-.folderButtons{
-    margin-left: 2%;
+.folderSite{
+    box-sizing: border-box;
     height: 100%;
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    justify-content: right;
+    width: 40%;
+    background: #3E3E3E;
+    border: solid 2px #858585;
+    border-radius: 15px;
+    scrollbar-width: thin; /* Ustawienie grubości paska przewijania */
+    scrollbar-color: #ccc transparent; /* Kolor paska przewijania */;
+
 }
 .folderBar{
     width: 100%;
@@ -16,24 +18,48 @@
     display: flex;
     min-height: 35px;
 }
-.folderSite{
-    box-sizing: border-box;
-    height: 100%;
-    width: 40%;
-    background: #3E3E3E;
-    border: solid 2px #858585;
-    border-radius: 15px;
-    
-}
 .folderName{
-    margin-left: 4%;
     box-sizing: border-box;
+    margin-left: 4%;
     width: 60%;
-    height: 100%;
+    height: 94%;
     display: flex;
     padding: 2% 0 0 2%;
     color: aliceblue;
     font-size: 150%;
+}
+.folderButtons{
+    margin-left: 2%;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: right;
+}
+.folders{
+    box-sizing: border-box;
+    height: 94%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow-x: auto;
+}
+.folders {
+    margin-bottom: 10px
+}
+.folders::-webkit-scrollbar {
+    width: 5px;
+    height: 5px; /* Szerokość paska przewijania */
+}
+
+.folders::-webkit-scrollbar-thumb {
+    background-color: #818181af; /* Kolor paska przewijania */
+    border-radius: 5px; /* Zaokrąglenie paska przewijania */
+}
+.folders::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa; /* Kolor paska przewijania po najechaniu myszką */
+    padding-bottom: 10px
 }
 @media only screen and (max-width: 800px) {
     .folderSite{
@@ -63,5 +89,4 @@
         color: aliceblue;
         font-size: 150%;
     }
- }
- 
+}

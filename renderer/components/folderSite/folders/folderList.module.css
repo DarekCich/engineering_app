@@ -1,0 +1,89 @@
+.listUl{
+    box-sizing: border-box;
+    list-style: none;
+    min-width: 20vw;
+    justify-content: right;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+.folder{
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding-left: 5%;
+    margin: 1%;
+    max-height: 5vh;
+    min-height: 2vh;
+    display: flex;
+    align-items: center;
+    color: antiquewhite;
+}
+.folderBox{
+    box-sizing: border-box;
+    width: 95%;
+    height: auto;
+
+}
+.nonClicked{
+    display: flex;
+    box-sizing: border-box;
+    margin-left: -20%;
+    padding: 1% 2% 1% 10% ;
+    height: auto;
+    width: 100%;
+}
+.clicked {
+    display: flex;
+    box-sizing: border-box;
+    margin-left: -20%;
+    padding: 1% 2% 1% 10% ;
+    height: auto;
+    width: 100%;
+    background-color: rgba(153, 153, 153, 0.253);
+    border-right: 3px solid #2ea300;
+    box-shadow: 3px 3px 3px -1px rgba(46, 46, 46, 1);
+    border-radius: 5px 0 0 5px;
+}
+.folderLi{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+.line{
+    box-sizing: border-box;
+    height: 1px;
+    margin-left: 5%;
+    width: 50%;
+    background-color:rgb(117, 117, 117) ;
+
+}
+.isActive{
+    box-sizing: border-box;
+    margin-left: -15%;
+    padding: 0 0 2% 15% ;
+    width: 300%;
+    background-color: rgba(117, 117, 117, 0.253);
+    border-right: 2px solid #ffffff;
+    box-shadow: 5px 5px 5px -2px rgba(46, 46, 46, 1);
+    border-radius: 5px 0 0 5px;
+
+}
+.folderImg{
+
+    filter: invert(100);
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    max-height: 20px;
+    padding: 0;
+    margin: 0 8px 0 8px;
+    border: 0;
+    background: 000000;
+}
+.paddingName{
+    margin-left: 30px;
+}
