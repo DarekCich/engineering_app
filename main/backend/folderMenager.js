@@ -1,19 +1,19 @@
-export function createRootFolder(){
+export function folderCreateRoot(){
     const fs = window.require('fs');
     if (! fs.existsSync("./files")) {
-        console.log("git")
+        // console.log("git")
         mkdir("./files")
     }
 }
-export function createFolder(path){
-    const fs = window.require('fs');
+export function folderCreate(path){
     mkdir(path)
 }
 
 
-export function listItemInFolder(folderName){
-    let tab = [];
+export function folderListOfFolders(folderName){
     const fs = window.require('fs');
+    
+    let tab = [];
     if (! fs.existsSync(folderName)) {
         return [-1]
     }
@@ -22,17 +22,17 @@ export function listItemInFolder(folderName){
             return [-1];
         }
         files.map(file => {
-            if(isDirectory(file.toString));
+            if(folderIsDirectory(file.toString));
                 tab.push(file.toString());
         });
-        console.log(tab);
+        // console.log(tab);
         return tab;
     });
 }
 
-
-export function isDirectory(path){
+export function folderIsDirectory(path){
     const fs = window.require('fs');
+
     fs.stat(path, (err, stats) => {
     if (err) {
         console.error(err);
@@ -44,9 +44,9 @@ export function isDirectory(path){
         return false;
     });
 }
-const mkdir = async (name, num) =>{
-    const path = window.require('path');
+async function mkdir(name, num){
     const fs = window.require('fs');
+
     if(typeof num === 'number')
         await fs.mkdir(name+`(${num})`, (err) => {
             if (err) {
@@ -59,9 +59,10 @@ const mkdir = async (name, num) =>{
                 mkdir(name,1)
         });
 }
-export function renameFolder(old,newname){
+export function folderRename(old,newname){
     const fs = require('fs');
     const path = require('path');
+
     const parentDirectory  = path.join(old, '..');
     const newDirectoryName = parentDirectory + '\\' + newname
     fs.rename(old, newDirectoryName, (err) => {
@@ -69,5 +70,15 @@ export function renameFolder(old,newname){
             return ''
         }
     return newDirectoryName
+    });
+}
+export function folderRemove(path){
+    const fs = require('fs');
+
+    fs.rmdir(path, { recursive: true }, (err) => {
+        if (err) 
+            console.error('Błąd podczas usuwania katalogu:', err);
+        // else 
+            // console.log('Katalog został usunięty.');
     });
 }

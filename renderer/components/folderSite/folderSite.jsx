@@ -3,8 +3,8 @@ import MenuButton from '../buttons/menuButton';
 import Folders from './folders/folderList';
 import React, { useEffect, useRef, useState } from 'react';
 import { createFolder } from '../../../main/backend/folderMenager';
-function FolderSite() {
-  const [ pathClicked, setPathClicked ] = useState('');
+function FolderSite({pathClicked, setPathClicked}) {
+  
   const [ reload, setReload] = useState(false)
   const click = () =>{
     setReload(!reload)

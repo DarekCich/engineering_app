@@ -1,10 +1,10 @@
 import styles from './itemsSite.module.css'
-function ItemsSite(){
+import FileList from './fileList/fileList';
+function ItemsSite({pathClicked}){
 
     return(
-     <div className={styles.itemsSite}>
-        <div className={styles.fileList}>
-        </div>
+    <div className={styles.itemsSite}>
+        <FileList pathClicked={pathClicked}/>
         <div className={styles.fileDetails}>
             <div className={styles.fileView}></div>
             <div className={styles.fileDetail}></div>

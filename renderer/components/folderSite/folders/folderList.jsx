@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { listItemInFolder, createRootFolder, renameFolder } from '../../../../main/backend/folderMenager';
+import { folderListOfFolders, folderCreateRoot, folderRename } from '../../../../main/backend/folderMenager';
 import styles from './folderList.module.css'
 function Folders({ path,show, pathClicked, setPathClicked, reload }) {
     const [showSelf,          setShowSelf] = useState(false)
@@ -17,7 +17,7 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
     const clicked = () => {
         setShowList(!showList)
         setPathClicked(path)
-        setFolderList(listItemInFolder(path))
+        setFolderList(folderListOfFolders(path))
         setNewName(path.split('/').pop())
     }
     const changeValue = (val)=>{
@@ -31,18 +31,18 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
             && pathClicked  === path 
             && rename) {
                 setRename(false)
-                renameFolder(path,newName)
+                folderRename(path,newName)
         }
     };
     useEffect(() => {
         if (typeof window !== "undefined") {
-            createRootFolder();
-            const tmp = listItemInFolder(path)
+            folderCreateRoot();
+            const tmp = folderListOfFolders(path)
             if (tmp[0] === -1){
                 return
             }
             setShowSelf(true)
-            setFolderList(listItemInFolder(path))
+            setFolderList(folderListOfFolders(path))
             if(show !== undefined)
                 setShowList(show)
         }
@@ -50,13 +50,13 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
     useEffect(() => {
         if(pathClicked!==path && rename){
             setRename(false)
-            renameFolder(path,newName)
+            folderRename(path,newName)
         }
             
     }, [pathClicked]);
 
     useEffect(() => {
-        setFolderList(listItemInFolder(path));
+        setFolderList(folderListOfFolders(path));
     }, [reload]);
     if (showSelf)
         return (

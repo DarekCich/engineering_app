@@ -1,0 +1,66 @@
+.fileList{
+    box-sizing: border-box;
+    width: 100%;
+    height: 40%;
+    background: #3E3E3E;
+    border: solid 2px #858585;
+    border-radius: 15px
+}
+.fileBar{
+    width: 100%;
+    height: 6%;
+    border-radius: 15px 15px 5px 5px;
+    background: #494949;
+    border-bottom: solid 2px #858585;
+    display: flex;
+    min-height: 35px;
+}
+.folderName{
+    box-sizing: border-box;
+    margin-left: 4%;
+    width: 60%;
+    height: 94%;
+    display: flex;
+    padding: 2% 0 0 2%;
+    color: aliceblue;
+    font-size: 150%;
+    cursor: default;
+}
+.fileButtons{
+    margin-left: 2%;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: right;
+}
+@media only screen and (max-width: 800px) {   
+    .fileList{
+        box-sizing: border-box;
+        width: 100%;
+        height: 45%;
+        background: #3E3E3E;
+        border: solid 2px #858585;
+        border-radius: 15px
+    }
+    .fileBar{
+        width: 100%;
+        height: 10%;
+        min-height: 35px;
+        border-radius: 15px 15px 5px 5px;
+        background: #494949;
+        border-bottom: solid 2px #858585;
+        display: flex;
+    }
+    .folderName{
+        margin-left: 4%;
+        box-sizing: border-box;
+        width: 60%;
+        height: 90%;
+        display: flex;
+        padding: 1% 0;
+        color: aliceblue;
+        font-size: 150%;
+    }
+}
