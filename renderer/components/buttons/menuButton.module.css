@@ -13,4 +13,14 @@
     margin: 0 8px 0 8px;
     border: 0;
     background: 000000;
+    cursor: pointer;
+    
+}
+.folderButton:active{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding-top: 5px;
+}
+.folderButton:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding-bottom: 5px;
 }
