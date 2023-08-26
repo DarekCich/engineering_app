@@ -38,11 +38,15 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
         if (typeof window !== "undefined") {
             folderCreateRoot();
             const tmp = folderListOfFolders(path)
-            if (tmp[0] === -1){
+            if (   tmp[0] === -1 
+                || tmp[0] === -2 ){
                 return
             }
             setShowSelf(true)
-            setFolderList(folderListOfFolders(path))
+            if (tmp != 'undefined' ){
+                setFolderList(folderListOfFolders(path))
+            }
+
             if(show !== undefined)
                 setShowList(show)
         }
@@ -73,23 +77,24 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
                             <img src='/images/arrowRight.png' className={styles.folderImg}></img> 
                         }
                         <div className={isHovered ? styles.isActive : null} onDoubleClick={()=>{setRename(true)}}>
+                            <div className={styles.folderName}>
                             {
+                                
                                 rename && pathClicked === path ?   
-                                <div >
                                     <input type='text' value={newName} 
                                     onChange={(val)=>{changeValue(val)}} 
                                     onKeyDown={handleKeyDown}></input>
-                                </div> 
                                 :
-                                path.split('/').pop()
+                                    path.split('/').pop()
+                                
                             }
-                            
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className={styles.line}></div>
                 <ul className={styles.listUl}>
-                    { showList  ?
+                    { showList ?
                         folderList.map((x, index) => (
                         <li key={index} className={styles.folderLi}>
                             <Folders path={path + '/' + x} pathClicked={pathClicked} setPathClicked={setPathClicked} reload={reload}></Folders>

@@ -10,40 +10,29 @@ export function folderCreate(path){
 }
 
 
-export function folderListOfFolders(folderName){
+export function folderListOfFolders(path) {
     const fs = window.require('fs');
-    
     let tab = [];
-    if (! fs.existsSync(folderName)) {
-        return [-1]
+
+    if (!fs.existsSync(path)) {
+        return [-1];
     }
-    return fs.readdirSync(folderName, (err, files) => {
-        if(err){
-            return [-1];
-        }
-        files.map(file => {
-            if(folderIsDirectory(file.toString));
-                tab.push(file.toString());
+    try {
+        const files = fs.readdirSync(path);
+        files.forEach(file => {
+            const fullPath = `${path}/${file}`;
+            const stats = fs.lstatSync(fullPath);
+            if (stats.isDirectory()) {
+                tab.push(file);
+            }
         });
-        // console.log(tab);
         return tab;
-    });
-}
-
-export function folderIsDirectory(path){
-    const fs = window.require('fs');
-
-    fs.stat(path, (err, stats) => {
-    if (err) {
+    } catch (err) {
         console.error(err);
-        return;
+        return [-2];
     }
-    if (stats.isDirectory())
-        return true;
-    else
-        return false;
-    });
 }
+
 async function mkdir(name, num){
     const fs = window.require('fs');
 

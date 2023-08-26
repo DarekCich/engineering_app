@@ -1,6 +1,8 @@
 import styles from './fileList.module.css'
 import MenuButton from '../../buttons/menuButton';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { fileListOfFiles } from '../../../../main/backend/fileMenager';
+import File from './file/file';
 function FileList({pathClicked}){
     const [fileList,       setfileList] = useState([]);
     const [fileClicked, setFileClicked] = useState('')
@@ -10,6 +12,17 @@ function FileList({pathClicked}){
     const click = () => {
         
     }
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const tmp = fileListOfFiles(pathClicked)
+            if (   tmp[0] === -1 
+                || tmp[0] === -2 ){
+                return
+            }
+            setfileList(tmp)
+        }
+    }, [pathClicked]);   
+
     return(
         <div className={styles.fileList}>
             <div className={styles.fileBar}>
@@ -21,9 +34,7 @@ function FileList({pathClicked}){
             </div>
             <div className={styles.files}>
                 {   fileList.map((x, index) => (
-                        <li key={index} className={styles.folderLi}>
-                            {x}
-                        </li>
+                    <File path={x} key={index}></File>
                     )) 
                 }
             </div>

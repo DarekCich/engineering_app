@@ -2,7 +2,7 @@ import styles from './folderSite.module.css';
 import MenuButton from '../buttons/menuButton';
 import Folders from './folders/folderList';
 import React, { useEffect, useRef, useState } from 'react';
-import { createFolder } from '../../../main/backend/folderMenager';
+import { folderCreate } from '../../../main/backend/folderMenager';
 function FolderSite({pathClicked, setPathClicked}) {
   
   const [ reload, setReload] = useState(false)
@@ -11,7 +11,7 @@ function FolderSite({pathClicked, setPathClicked}) {
   }
   const newFolder = async ()=>{
     let tmp = pathClicked+'/newFolder';
-    await createFolder(tmp)
+    await folderCreate(tmp)
     setReload(!reload);
   }
   function reloadEvrySecond() {

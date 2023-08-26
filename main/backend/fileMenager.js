@@ -1,3 +1,5 @@
+import { log } from 'console';
+
 export function fileRemove(path){
     const fs = require('fs');
     
@@ -20,35 +22,44 @@ export function fileCreate(path){
     });
 }
 
-export function fileListOfFiles(path){
+export function fileListOfFiles(path) {
     const fs = window.require('fs');
-    
+
     let tab = [];
-    if (! fs.existsSync(path)) {
-        return [-1]
+
+    if (!fs.existsSync(path)) {
+        return [-1];
     }
-    return fs.readdirSync(path, (err, files) => {
-        if(err){
-            return [-1];
-        }
-        files.map(file => {
-            if(fileIsDirectory(file.toString));
-                tab.push(file.toString());
+
+    try {
+        const files = fs.readdirSync(path);
+
+        files.forEach(file => {
+            const fullPath = `${path}/${file}`;
+            const stats = fs.lstatSync(fullPath);
+
+            if (!stats.isDirectory()) {
+                tab.push(file);
+            }
         });
-        // console.log(tab);
+
         return tab;
-    });
+    } catch (err) {
+        console.error(err);
+        return [-2];
+    }
 }
 
-export function fileIsDirectory(path){
+function fileIsDirectory(path){
     const fs = window.require('fs');
-
-    fs.stat(path, (err, stats) => {
+    console.log('test');
+    fs.lstat(path, (err, stats) => {
     if (err) {
         console.error(err);
-        return;
+        return false;
     }
-    if (! stats.isDirectory())
+    
+    if (stats.isDirectory())
         return true;
     else
         return false;

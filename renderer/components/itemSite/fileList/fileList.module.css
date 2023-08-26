@@ -4,7 +4,9 @@
     height: 40%;
     background: #3E3E3E;
     border: solid 2px #858585;
-    border-radius: 15px
+    border-radius: 15px;
+    overflow: hidden;
+    
 }
 .fileBar{
     width: 100%;
@@ -35,6 +37,27 @@
     justify-items: center;
     justify-content: right;
 }
+.files{
+    margin: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 98%;
+    height: 82%;
+    box-sizing: border-box;
+    overflow-x:hidden;
+}
+.files::-webkit-scrollbar {
+    width: 5px;
+    height: 5px; /* Szerokość paska przewijania */
+    appearance: none;
+}
+
+.files::-webkit-scrollbar-thumb {
+    background-color: #818181af; /* Kolor paska przewijania */
+    -webkit-appearance: none;
+    border-radius: 5px; /* Zaokrąglenie paska przewijania */
+    appearance: none;
+}
 @media only screen and (max-width: 800px) {   
     .fileList{
         box-sizing: border-box;
@@ -62,5 +85,8 @@
         padding: 1% 0;
         color: aliceblue;
         font-size: 150%;
+    }
+    .files{
+        height: 75%;
     }
 }
