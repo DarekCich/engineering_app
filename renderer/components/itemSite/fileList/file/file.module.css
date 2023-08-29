@@ -1,5 +1,7 @@
 .file{
+    
     box-sizing: border-box;
+    padding-top: 2%;
     margin: 2% 1%;
     display: flex;
     flex-direction: column;
@@ -16,9 +18,49 @@
     padding-top: 4%;
     width: 90%;
 }
+
+.file:active{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 4% 4% 24% 4%;
+}
+.file:hover{
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 1.5% 2px 2px 2px;
+}
+.inputName{
+    width: 90%;
+}
+.isClicked{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    border-bottom: 3px solid #2ea300;
+}
+.isntClicked{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 5px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+}
 @media only screen and (max-width: 800px) {   
     .file{
-        max-height: 60%;
+        margin-top: 0;
+        max-height: 65%;
     }
 }
 @media only screen and (max-width: 500px) {   

@@ -1,5 +1,3 @@
-import { log } from 'console';
-
 export function fileRemove(path){
     const fs = require('fs');
     
@@ -10,18 +8,47 @@ export function fileRemove(path){
             console.log('Plik został usunięty.');
     });
 }
+export async function fileCreate(name, num) {
+    const fs = window.require('fs');
 
-export function fileCreate(path){
+    if (typeof num === 'undefined') {
+        num = 1;
+    }
+
+    const fileName = num > 1 ? `${name}(${num})` : name;
+
+    try {
+        await fs.promises.access(fileName);
+        // Plik istnieje, wywołujemy rekurencyjnie
+        await fileCreate(name, num + 1);
+    } catch (error) {
+        // Plik nie istnieje, tworzymy nowy
+        await fs.promises.writeFile(fileName, '');
+    }
+}
+// export function fileCreate(path,id ){
+//     const fs = require('fs');
+
+//     fs.writeFile(path, '', (err) => {
+//     if (err) 
+//         console.error('Błąd podczas tworzenia pliku:', err);
+//     else 
+//         console.log('Plik został utworzony.');
+//     });
+// }
+export function fileRename(pathD,old,newname){
     const fs = require('fs');
-
-    fs.writeFile(path, fileContent, (err) => {
-    if (err) 
-        console.error('Błąd podczas tworzenia pliku:', err);
-    else 
-        console.log('Plik został utworzony.');
+    const path = require('path');
+    console.log(pathD+ '/'  + old);
+    const oldFile  = path.join(pathD+ '/'  + old);
+    const newFileDirectoryName = pathD + '/' + newname
+    fs.rename(oldFile, newFileDirectoryName, (err) => {
+        if (err) {
+            return ''
+        }
+    return newFileDirectoryName
     });
 }
-
 export function fileListOfFiles(path) {
     const fs = window.require('fs');
 

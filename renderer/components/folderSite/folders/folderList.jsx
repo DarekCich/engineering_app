@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { folderListOfFolders, folderCreateRoot, folderRename } from '../../../../main/backend/folderMenager';
+import { folderListOfFolders, folderCreateRoot, folderRename, folderRemove } from '../../../../main/backend/folderMenager';
 import styles from './folderList.module.css'
 function Folders({ path,show, pathClicked, setPathClicked, reload }) {
     const [showSelf,          setShowSelf] = useState(false)
@@ -14,6 +14,9 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
     const handleHoverF = () => {
         setIsHovered(false);
     };
+    const deleteFolder = () => {
+        folderRemove(path)
+    }
     const clicked = () => {
         setShowList(!showList)
         setPathClicked(path)
@@ -31,7 +34,10 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
             && pathClicked  === path 
             && rename) {
                 setRename(false)
-                folderRename(path,newName)
+                if(newName !== '')
+                    folderRename(path,newName)
+                else
+                    setNewName(path)
         }
     };
     useEffect(() => {
@@ -54,9 +60,11 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
     useEffect(() => {
         if(pathClicked!==path && rename){
             setRename(false)
-            folderRename(path,newName)
+            if(newName !== '')
+                folderRename(path,newName)
+            else
+                setNewName(path)
         }
-            
     }, [pathClicked]);
 
     useEffect(() => {
@@ -76,20 +84,27 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
                             :  
                             <img src='/images/arrowRight.png' className={styles.folderImg}></img> 
                         }
-                        <div className={isHovered ? styles.isActive : null} onDoubleClick={()=>{setRename(true)}}>
+                        <div className={isHovered ? styles.isActive : styles.nonActive} onDoubleClick={()=>{setRename(true)}}>
                             <div className={styles.folderName}>
                             {
-                                
                                 rename && pathClicked === path ?   
                                     <input type='text' value={newName} 
                                     onChange={(val)=>{changeValue(val)}} 
                                     onKeyDown={handleKeyDown}></input>
                                 :
                                     path.split('/').pop()
-                                
                             }
                             </div>
                         </div>
+                        {
+                            pathClicked === path ? 
+                        <div className={styles.deleteButton}>
+                            <button onClick={deleteFolder} className={styles.buttonDel}>
+                                <img src="/images/delete.png" alt="delete" className={styles.buttonDelImg}/>
+                            </button>
+                        </div>
+                        : null
+                        }
                     </div>
                 </div>
                 <div className={styles.line}></div>

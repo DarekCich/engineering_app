@@ -64,7 +64,7 @@ export function folderRename(old,newname){
 export function folderRemove(path){
     const fs = require('fs');
 
-    fs.rmdir(path, { recursive: true }, (err) => {
+    fs.rm(path, { recursive: true }, (err) => {
         if (err) 
             console.error('Błąd podczas usuwania katalogu:', err);
         // else 

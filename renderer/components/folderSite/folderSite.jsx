@@ -1,7 +1,7 @@
 import styles from './folderSite.module.css';
 import MenuButton from '../buttons/menuButton';
 import Folders from './folders/folderList';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { folderCreate } from '../../../main/backend/folderMenager';
 function FolderSite({pathClicked, setPathClicked}) {
   
@@ -17,7 +17,7 @@ function FolderSite({pathClicked, setPathClicked}) {
   function reloadEvrySecond() {
     setInterval(() => {
       setReload(!reload);
-    }, 1000); 
+    }, 5000); 
   }
   
   // Wywołanie funkcji
