@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './itemsSite.module.css'
 import FileList from './fileList/fileList';
 function ItemsSite({pathClicked}){

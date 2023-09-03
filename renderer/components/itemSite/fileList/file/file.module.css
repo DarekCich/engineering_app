@@ -14,6 +14,9 @@
     white-space: normal;
     overflow: hidden;
 }
+.buttonDelImg{
+    max-height: 12px;
+}
 .name{
     padding-top: 4%;
     width: 90%;
@@ -56,6 +59,33 @@
     overflow-wrap: break-word;
     white-space: normal;
     overflow: hidden;
+}
+.buttonDel:active{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding-top: 5px;
+}
+.buttonDel:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding-bottom: 5px; 
+}
+.buttonDel{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 0%;
+    margin: 0%;
+    border: none;
+    background: none;
+    position: absolute;
+    right: 100%;
+    bottom: 50%;
+    width: 20px;
+    height: 20px;
+}
+.imgAndButton{
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 @media only screen and (max-width: 800px) {   
     .file{

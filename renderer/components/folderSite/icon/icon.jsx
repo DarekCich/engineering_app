@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './icon.module.css'
 function Icon({name}){
     const skrot = name.split('.').pop()

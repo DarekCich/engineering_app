@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../../Style/home.module.css'
 import ItemsSite from '../components/itemSite/itemsSite'
 import FolderSite from '../components/folderSite/folderSite'

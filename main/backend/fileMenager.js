@@ -26,16 +26,7 @@ export async function fileCreate(name, num) {
         await fs.promises.writeFile(fileName, '');
     }
 }
-// export function fileCreate(path,id ){
-//     const fs = require('fs');
 
-//     fs.writeFile(path, '', (err) => {
-//     if (err) 
-//         console.error('Błąd podczas tworzenia pliku:', err);
-//     else 
-//         console.log('Plik został utworzony.');
-//     });
-// }
 export function fileRename(pathD,old,newname){
     const fs = require('fs');
     const path = require('path');

@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './menuButton.module.css'
 
 function MenuButton(props){
