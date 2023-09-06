@@ -3,3 +3,9 @@ node_modules
 .next
 app
 dist
+files
+.vscode
+.idea
+renderer/.next
+renderer/out
+renderer/out/_next/static/0vl2YkNBqLkoGkU0LRnXN/_buildManifest.js

@@ -1,15 +1,95 @@
 .homePage{
+    box-sizing: border-box;
     background: #2B2B2B;
     margin: -8px -8px;
     width:      100vw;
     height:     100vh;
+    overflow: hidden;
 }
+
 .bar{
-    background: #3C3C3C;
-    width:      100%;
+  display: flex;
+    box-sizing: border-box;
+    background: #363636;
+    width:      100vw;
+    padding:    0 1vw;
     height:     4%;
     min-height: 30px;
     max-height: 40px;
-    border-bottom: solid 1px #858585;
+    border-bottom: solid 2px #858585;
     border-radius: 0 0 5px 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
+.bar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px; /* Szerokość paska przewijania */
+  appearance: none;
+}
+
+.bar::-webkit-scrollbar-thumb {
+  background-color: #818181af; /* Kolor paska przewijania */
+  -webkit-appearance: none;
+  border-radius: 5px; /* Zaokrąglenie paska przewijania */
+  appearance: none;
+}
+.mainMenu{
+  margin-right: 1vw;
+}
+.pages{
+    margin-top: 1vh;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: #2B2B2B;
+    display: flex;
+}
+.tab{
+  box-sizing: border-box;
+  width:      20%;
+  height:     100%;
+  min-width:  15%;
+  border: 1px solid rgba(245, 245, 245, 0.315);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(240, 248, 255, 0.575);
+
+}
+.showed{
+  z-index: 5;
+}
+.notShowed{
+  width: 0;
+  height: 0;
+  z-index: -1;
+}
+.tab:hover{
+  background-color: #494949;
+}
+@media only screen and (max-width: 800px) {
+    .bar{
+      display: flex;
+        box-sizing: border-box;
+        background: #363636;
+        width:      100%;
+        padding: 0 1%;
+        height:     8%;
+        min-height: 30px;
+        max-height: 40px;
+        border-bottom: solid 2px #858585;
+        border-radius: 0 0 5px 5px;
+    }
+    .content{
+        box-sizing: border-box;
+        width:  95vw;
+        height: 90%;
+        margin: 2vh 2.5vw;
+        background: #363636;
+        border-radius: 15px;
+        border: solid 2px #858585;
+        padding: 2% 3%;
+        display: flex;
+        flex-direction: column;
+    }
+ }

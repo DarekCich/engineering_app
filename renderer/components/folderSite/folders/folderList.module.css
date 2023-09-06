@@ -1,0 +1,143 @@
+.listUl{
+    box-sizing: border-box;
+    list-style: none;
+    min-width: 20vw;
+    justify-content: right;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+.folder{
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding-left: 5%;
+    margin: 1%;
+    max-height: 5vh;
+    min-height: 2vh;
+    display: flex;
+    align-items: center;
+    color: antiquewhite;
+}
+.folderBox{
+    cursor: default;
+    box-sizing: border-box;
+    width: 95%;
+    height: auto;
+
+}
+.nonClicked{
+    display: flex;
+    box-sizing: border-box;
+    padding: 1% 2% 1% 0% ;
+    height: auto;
+    width: 100%;
+}
+.clicked {
+    display: flex;
+    box-sizing: border-box;
+    padding: 1% 2% 1% 0 ;
+    height: auto;
+    width: 100%;
+    background-color: rgba(153, 153, 153, 0.253);
+    border-right: 3px solid #2ea300;
+    box-shadow: 3px 3px 3px -1px rgba(46, 46, 46, 1);
+    border-radius: 5px 0 0 5px;
+}
+.folderLi{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+.line{
+    box-sizing: border-box;
+    height: 1px;
+    margin-left: 5%;
+    width: 50%;
+    background-color:rgb(117, 117, 117) ;
+
+}
+.isActive{
+    box-sizing: border-box;
+    padding: 1% 1% 2% 5% ;
+    width: 100%;
+    background-color: rgba(117, 117, 117, 0.253);
+    border-right: 2px solid #ffffff;
+    box-shadow: 5px 5px 5px -2px rgba(46, 46, 46, 1);
+    border-radius: 5px 0 0 5px;
+    
+
+}
+.nonActive{
+    box-sizing: border-box;
+    width: 100%;
+}
+.folderImg{
+
+    filter: invert(100);
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    max-height: 20px;
+    padding: 0;
+    margin: 0 8px 0 8px;
+    border: 0;
+    background: 000000;
+}
+.folderImg:active{
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    padding: 2px 2px 2px 2px;
+}
+.folderImg:hover{
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    padding: 2px 2px 2px 2px;
+}
+.paddingName{
+    margin-left: 30px;
+}
+.folderName{
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.deleteButton{
+    padding-left: 2%;
+    display: flex;
+    align-items: center;
+}
+.buttonDel{
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.buttonDel:active{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+}
+.buttonDel:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 5px 5px 2px 5px;
+}
+.buttonDelImg{
+    max-height: 12px;
+}
+@media only screen and (max-width: 800px) {  
+    .buttonDelImg{
+        max-height: 25px;
+    } 
+    .folderImg{
+        max-height: 40px;
+    }
+    .folderName{
+        font-size: 30px;
+    }
+    .isActive{
+        padding-left:  5%  ;
+    }
+}

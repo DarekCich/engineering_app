@@ -1,0 +1,26 @@
+.iconsFolderButtons{
+  width: 25px;
+  height: 25px;
+  filter: invert(100);
+}
+.folderButton{
+  align-items: center;
+  justify-items: center;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0 8px 0 8px;
+  border: 0;
+  background: 000000;
+  cursor: pointer;
+  
+}
+.folderButton:active{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding-top: 5px;
+}
+.folderButton:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding-bottom: 5px;
+}
