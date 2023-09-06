@@ -3,7 +3,7 @@ import Icon from '../../../folderSite/icon/icon';
 import { fileRename, fileRemove } from '../../../../../main/backend/fileMenager';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-function File({path, pathClicked, setReload, setFileClicked, fileClicked}){
+function File({path, pathClicked, setReload, setFileClicked, fileClicked, addToPages}){
     const [rename,              setRename] = useState(false);
     const [newName,            setNewName] = useState(path.split('/').pop())
     
@@ -44,7 +44,7 @@ function File({path, pathClicked, setReload, setFileClicked, fileClicked}){
     return(
         <div className={styles.file} 
             onClick={()=>{setFileClicked(path)}}
-            onDoubleClick={()=>{loadFile()}}
+            onDoubleClick={()=>{addToPages(pathClicked+'/'+path)}}
         >
             <div className={fileClicked===path ? styles.isClicked : styles.isntClicked}>
                 {
@@ -54,7 +54,6 @@ function File({path, pathClicked, setReload, setFileClicked, fileClicked}){
                             <img src="/images/delete.png" alt="delete" className={styles.buttonDelImg}/>
                         </button> 
                         <Icon name={ path}/>
-                        <Link href={`/editor/edit?parametr=${pathClicked}/${path}`} className={"NewFile"}> test </Link>
                     </div>
                     :
                     <Icon name={ path}/>

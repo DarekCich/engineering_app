@@ -4,7 +4,7 @@ import MenuButton from '../../buttons/menuButton';
 import { useState, useEffect } from 'react';
 import { fileListOfFiles, fileCreate,fileRename } from '../../../../main/backend/fileMenager';
 import File from './file/file';
-function FileList({pathClicked}){
+function FileList({pathClicked, addToPages}){
     const [fileList,       setfileList] = useState([]);
     const [fileClicked, setFileClicked] = useState('');
     const [reload, setReload] = useState(false);
@@ -58,7 +58,7 @@ function FileList({pathClicked}){
             </div>
             <div className={styles.files}>
                 {   fileList.map((x, index) => (
-                    <File path={x} key={index} pathClicked={pathClicked} setReload={changeReload} fileClicked={fileClicked} setFileClicked={setFileClicked}></File>
+                    <File path={x} key={index} pathClicked={pathClicked} setReload={changeReload} fileClicked={fileClicked} setFileClicked={setFileClicked} addToPages={addToPages}></File>
                     )) 
                 }
             </div>
