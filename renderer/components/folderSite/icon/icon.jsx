@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './icon.module.css'
+import { formatImages } from '../../../public/images/fileIcons/formatImages';
 function Icon({name}){
   const skrot = name.split('.').pop()
   let x;
-  if (skrot == 'txt')
-    x = '/images/textFile.png'
+  if (formatImages.includes(skrot))
+    x = `/images/fileIcons/${skrot}.png`
   else 
-    x = '/images/file.png' 
+    x = '/images/fileIcons/file.png' 
   return(
     <img src={x} className={styles.reverse}></img>
   )

@@ -13,3 +13,32 @@
     --curve_mid:            10px;
     --curve_low:            5px;
 }
+.quill {
+  box-sizing: border-box;
+  height: 100%;
+  border-radius: 15px;
+}
+.ql-toolbar.ql-snow {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height: 10%;
+
+}
+.ql-container.ql-snow {
+  height: 90%;
+}
+.ql-snow .ql-picker-label {
+  cursor: pointer;
+  display: inline-block;
+  height: 100%;
+  padding-left: 8px;
+  padding-right: 2px;
+  position: relative;
+  width: 100%;
+  color:#ccc;
+}
+
+
+.ql-snow .ql-formats {
+  vertical-align: none;
+}

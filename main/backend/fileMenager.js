@@ -4,8 +4,8 @@ export function fileRemove(path){
   fs.unlink(path, (err) => {
     if (err) 
       console.error('Błąd podczas usuwania pliku:', err);
-    else 
-      console.log('Plik został usunięty.');
+    // else 
+    //   console.log('Plik został usunięty.');
   });
 }
 export async function fileCreate(name, num) {
@@ -29,7 +29,6 @@ export async function fileCreate(name, num) {
 export function fileRename(pathD,old,newname){
   const fs = require('fs');
   const path = require('path');
-  console.log(pathD+ '/'  + old);
   const oldFile  = path.join(pathD+ '/'  + old);
   const newFileDirectoryName = pathD + '/' + newname
   fs.rename(oldFile, newFileDirectoryName, (err) => {
@@ -67,7 +66,6 @@ export function fileListOfFiles(path) {
 
 function fileIsDirectory(path){
   const fs = window.require('fs');
-  console.log('test');
   fs.lstat(path, (err, stats) => {
   if (err) {
     console.error(err);

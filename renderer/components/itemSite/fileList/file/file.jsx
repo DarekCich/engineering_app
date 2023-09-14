@@ -58,7 +58,7 @@ function File({path, pathClicked, setReload, setFileClicked, fileClicked, addToP
                     :
                     <Icon name={ path}/>
                 }
-                <div className={styles.name} onDoubleClick={()=>{setRename(true)}}>
+                <div className={styles.name} onDoubleClick={(e)=>{ e.stopPropagation(); setRename(true); setNewName(path)}}>
                 {
                     rename ?   
                         <input type='text' value={newName} 

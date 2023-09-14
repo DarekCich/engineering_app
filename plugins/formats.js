@@ -1,4 +1,7 @@
 export const formats = [
     'txt',
-    'pdf'
+    'pdf',
+    'png',
+    'ctf',
+    'md'
 ];

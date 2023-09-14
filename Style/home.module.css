@@ -34,7 +34,9 @@
   appearance: none;
 }
 .mainMenu{
-  margin-right: 1vw;
+  box-sizing: border-box;
+  padding-right: 1vw ;
+  padding-left: 0.5vw ;
 }
 .pages{
     margin-top: 1vh;
@@ -57,12 +59,14 @@
 
 }
 .showed{
-  z-index: 5;
+  background-color: #2B2B2B;
+  width: 100%;
+  height: 100%;
 }
 .notShowed{
   width: 0;
   height: 0;
-  z-index: -1;
+  overflow: hidden;
 }
 .tab:hover{
   background-color: #494949;

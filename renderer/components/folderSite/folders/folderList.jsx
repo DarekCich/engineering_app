@@ -85,7 +85,7 @@ function Folders({ path,show, pathClicked, setPathClicked, reload }) {
               :  
               <img src='/images/arrowRight.png' className={styles.folderImg}></img> 
             }
-          <div className={isHovered ? styles.isActive : styles.nonActive} onDoubleClick={()=>{setRename(true)}}>
+          <div className={styles.nonActive} onDoubleClick={()=>{setRename(true)}}>
             <div className={styles.folderName}>
             {
                 rename && pathClicked === path ?   

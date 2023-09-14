@@ -9,7 +9,7 @@ function FileList({pathClicked, addToPages}){
     const [fileClicked, setFileClicked] = useState('');
     const [reload, setReload] = useState(false);
     const newFile = async () => {
-        let tmp = pathClicked+'/newFolder';
+        let tmp = pathClicked+'/newFile';
         await fileCreate(tmp)
         tmp = fileListOfFiles(pathClicked)
             if (   tmp[0] === -1 

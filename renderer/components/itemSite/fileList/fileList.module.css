@@ -23,10 +23,11 @@
     width: 60%;
     height: 94%;
     display: flex;
-    padding: 2% 0 0 2%;
+    padding: 0 0 0 2%;
     color: aliceblue;
     font-size: 150%;
     cursor: default;
+    border: none;
 }
 .fileButtons{
     margin-left: 2%;

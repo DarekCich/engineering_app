@@ -1,12 +1,12 @@
 .file{
-    
+    z-index: 0;
     box-sizing: border-box;
     padding-top: 2%;
     margin: 2% 1%;
     display: flex;
     flex-direction: column;
     width: 23%;
-    max-height: 44%;
+    max-height: 50%;
     text-align: center;
     color: antiquewhite;
     align-items: center;
@@ -22,16 +22,12 @@
     width: 90%;
 }
 
-.file:active{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding: 4% 4% 24% 4%;
-}
 .file:hover{
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding: 1.5% 2px 2px 2px;
 }
 .inputName{
+  z-index: 1;
     width: 90%;
 }
 .isClicked{
