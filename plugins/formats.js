@@ -3,5 +3,6 @@ export const formats = [
     'pdf',
     'png',
     'ctf',
-    'md'
+    'md',
+    'abc'
 ];

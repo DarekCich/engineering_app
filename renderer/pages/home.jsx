@@ -4,6 +4,7 @@ import '../../Style/main.css';
 import Head from 'next/head';
 import styles from '../../Style/home.module.css';
 import HomePage from './homePage';
+import OptionsPage from './options/options'
 import MyComponent from './editor/edit';
 
 function Home() {
@@ -37,6 +38,12 @@ function Home() {
             onClick={() => setActualPage(null)}
             className={styles.mainMenu}
           />
+          <img
+            src="/images/opcje.png"
+            alt="opcje"
+            onClick={() => setActualPage(-1)}
+            className={styles.mainMenu}
+          />
 
           {paths.map((x, index) => (
             <div className={styles.tab} key={index} onClick={() => setActualPage(x)}>
@@ -48,6 +55,9 @@ function Home() {
         <div className={styles.pages}>
           <div className={actualPage === null ? styles.showed : styles.notShowed}>
             <HomePage addToPages={addToPages} />
+          </div>
+          <div className={actualPage === -1 ? styles.showed : styles.notShowed}>
+            <OptionsPage />
           </div>
           {paths.map((x, index) => (
             <div className={x === actualPage ? styles.showed : styles.notShowed} key={index}>

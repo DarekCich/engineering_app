@@ -1,4 +1,5 @@
 export const formatImages = [
   'txt',
-  'png'
+  'png',
+  'md'
 ]
