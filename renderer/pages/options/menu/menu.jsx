@@ -24,7 +24,7 @@ function MenuPage({ setUserLogin }) {
           axios.defaults.headers["Authorization"] = "";
           localStorage.setItem(
             "jwtToken",
-            axios.defaults.headers["Authorization"]
+            ""
           );
           setUserLogin("");
         }}

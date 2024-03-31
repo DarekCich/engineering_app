@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./logowanie.module.css";
 import axios from "axios";
+import { headers } from "next/dist/client/components/headers";
 
 function LoginPage({ setUserLogin, setBubbleMessage }) {
   const [formData, setFormData] = useState({
@@ -40,6 +41,11 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
         .post("http://localhost:8000/api/registers/", formData)
         .then((response) => {
           if (response.status === 201) {
+            setFormData({
+              username: "",
+              password: "",
+            });
+            setTryb("logowanie");
             setBubbleMessage("Pomyślnie zarejestrowano"); // Ustawienie wiadomości dymka
           }
         })
@@ -52,11 +58,32 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
   if (typeof localStorage !== 'undefined') 
   {
     if (localStorage.getItem("jwtToken")){
-      axios.defaults.headers["Authorization"] = localStorage.getItem("jwtToken");
-      setUserLogin(axios.defaults.headers["Authorization"]);
+      axios
+            .get("http://localhost:8000/api/registers/ping/", {
+              headers:{
+                Authorization:localStorage.getItem("jwtToken")
+              }
+            })
+            .then((response) => {
+              if (response.status == 200){
+                axios.defaults.headers["Authorization"] = localStorage.getItem("jwtToken");
+                setUserLogin(axios.defaults.headers["Authorization"]);
+                setBubbleMessage("Zalogowano");
+              }
+              else if(response.status in (402, 403)){
+                setBubbleMessage("Zaloguj się ponownie");
+                localStorage.setItem("jwtToken","")
+              }
+            })
+            .catch((error) => {
+              console.error("Błąd podczas wysyłania danych:", error);
+              setBubbleMessage("Błąd");
+            });
+        }
+
       // ping czy jeszcze token jest ważny
     }
-  }
+
 
   return (
     <div className={styles.body}>
@@ -79,7 +106,7 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
               className={styles.input}
               id={styles.name}
               name="username"
-              value={formData.name}
+              value={formData.username}
               onChange={handleChange}
             />
             <br />

@@ -1,6 +1,6 @@
 import styles from './folderSite.module.css';
 import MenuButton from '../buttons/menuButton';
-import Folders from './folders/folderList';
+import FoldersMain from './folders/folderListMain';
 import React, { useState } from 'react';
 import { folderCreate } from '../../../main/backend/folderMenager';
 function FolderSite({pathClicked, setPathClicked}) {
@@ -32,8 +32,8 @@ function FolderSite({pathClicked, setPathClicked}) {
         </div>
       </div>
       <div className={styles.folders}>
-          <Folders path='./files' pathClicked={pathClicked} setPathClicked={setPathClicked} reload={reload}></Folders>
-        </div>
+          <FoldersMain path='./files' pathClicked={pathClicked} setPathClicked={setPathClicked} reload={reload}></FoldersMain>
+      </div>
     </div>
   );
 }
