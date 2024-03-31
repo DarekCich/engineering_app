@@ -1,20 +1,23 @@
 import React, { Suspense } from 'react';
-import { formats } from  '../../../plugins/formats'
-const MyComponent = ({path}) =>  {
+import { formats } from  '../../../plugins/formats';
+
+function MyComponent ({path}){
+  if (!path) {
+    return <div>Path is not defined.</div>;
+  }
   const fileExtension = path.split('/').pop().split('.').pop(); 
-  let DynamicComponent
-  if (formats.includes(fileExtension))
-    DynamicComponent = React.lazy(() => import(`../../../plugins/${fileExtension}/${fileExtension}`));
-  else
-    DynamicComponent = React.lazy(() => import('./index'));
+  let DynamicComponent;
+  console.log(fileExtension);
+  if (formats.includes(fileExtension)) {
+    DynamicComponent = React.lazy(() => import(`../../../plugins/${fileExtension}/${fileExtension}.jsx`).catch(() => import('./index.jsx')));
+  } else {
+    DynamicComponent = React.lazy(() => import('./index.jsx'));
+  }
   
-  
-    return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        {DynamicComponent ? <DynamicComponent /> : null}
-      </Suspense>
-    </div>
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      {DynamicComponent ? <DynamicComponent file={path}/> : null}
+    </Suspense>
   );
 }
 

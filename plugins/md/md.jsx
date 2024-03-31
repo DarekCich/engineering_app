@@ -1,8 +1,9 @@
-import { readFile,saveFile } from './txt';
-import React, { useEffect, useState } from 'react';
-
-const txt = ({file}) => {
+import React, { useState,useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { readFile,saveFile } from './md';
+const MarkdownEditor = ({file}) => {
   const [text, setText] = useState('');
+
   const handleTextChange = (value) => {
     setText(value.target.value);
   };
@@ -13,18 +14,20 @@ const txt = ({file}) => {
     let tmp = readFile(file)
     setText(tmp);
   },[])
-
   return (
     <div>
       <div className="editor">
-        <button onClick={handleSaveFile}>save</button>
-        <textarea
+      <button onClick={handleSaveFile}>save</button>
+      <textarea
           value={text}
           onChange={handleTextChange}
         />
+      </div>
+      <div className="preview">
+        <ReactMarkdown>{text}</ReactMarkdown>
       </div>
     </div>
   );
 };
 
-export default txt;
+export default MarkdownEditor;

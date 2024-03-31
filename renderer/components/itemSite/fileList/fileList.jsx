@@ -9,7 +9,7 @@ function FileList({pathClicked, addToPages}){
     const [fileClicked, setFileClicked] = useState('');
     const [reload, setReload] = useState(false);
     const newFile = async () => {
-        let tmp = pathClicked+'/newFolder';
+        let tmp = pathClicked+'/newFile';
         await fileCreate(tmp)
         tmp = fileListOfFiles(pathClicked)
             if (   tmp[0] === -1 
@@ -50,7 +50,7 @@ function FileList({pathClicked, addToPages}){
     return(
         <div className={styles.fileList}>
             <div className={styles.fileBar}>
-                <div className={styles.folderName}>{pathClicked.split('/').pop()}</div>
+                <div className={styles.folderName}>{ pathClicked === "./files" ? "Pliki Lokalne" : pathClicked.split("/").pop()}</div>
                 <div className={styles.fileButtons}>
                     <MenuButton url='/images/reload.png'  onClick={click}></MenuButton>
                     <MenuButton url='/images/addFile.png' onClick={newFile}></MenuButton>
