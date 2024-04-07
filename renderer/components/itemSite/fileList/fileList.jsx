@@ -26,6 +26,7 @@ function FileList({ pathClicked, addToPages }) {
 
     const fileListOfFilesOnServertest = async () => {
         let tmp = []
+        const url = pathClicked === "@SERVER@" ? "http://localhost:8000/api/files/" : "http://localhost:8000/api/sharedfiles/"
         try {
             const axios = require("axios"); // Importujemy axios tutaj
             if (localStorage.getItem("jwtToken")) {
@@ -48,7 +49,7 @@ function FileList({ pathClicked, addToPages }) {
                         setBubbleMessage("Błąd");
                     });
             }
-            const response = await axios.get("http://localhost:8000/api/files/");
+            const response = await axios.get(url);
             tmp = response.data;
             setfileList(tmp);
             setFileClicked("");
@@ -63,7 +64,7 @@ function FileList({ pathClicked, addToPages }) {
         setfileList([]);
         if (typeof window !== "undefined") {
             let tmp;
-            if (pathClicked !== "@SERVER@") {
+            if (pathClicked !== "@SERVER@" && pathClicked !== "@SERVERSHARED@") {
                 tmp = fileListOfFiles(pathClicked);
                 if (tmp[0] === -1 || tmp[0] === -2) {
                     return;
@@ -78,7 +79,7 @@ function FileList({ pathClicked, addToPages }) {
         setfileList([]);
         if (typeof window !== "undefined") {
             let tmp;
-            if (pathClicked !== "@SERVER@") {
+            if (pathClicked !== "@SERVER@" && pathClicked !== "@SERVERSHARED@") {
                 tmp = fileListOfFiles(pathClicked);
                 if (tmp[0] === -1 || tmp[0] === -2) {
                     return;
@@ -95,8 +96,10 @@ function FileList({ pathClicked, addToPages }) {
                 <div className={styles.folderName}>
                     {pathClicked === "./files" && "Pliki Lokalne"}
                     {pathClicked === "@SERVER@" && "Pliki Zdalne"}
+                    {pathClicked === "@SERVERSHARED@" && "Pliki Udostępnione"}
                     {pathClicked !== "./files" &&
                         pathClicked !== "@SERVER@" &&
+                        pathClicked !== "@SERVERSHARED@" &&
                         pathClicked.split("/").pop()}
                 </div>
                 <div className={styles.fileButtons}>
@@ -105,7 +108,7 @@ function FileList({ pathClicked, addToPages }) {
                 </div>
             </div>
             <div className={styles.files}>
-                {pathClicked !== "@SERVER@"
+                {pathClicked !== "@SERVER@" && pathClicked !== "@SERVERSHARED@"
                     ? fileList.map((x, index) => ( typeof x !== 'object'?
                           <File
                               path={x}
@@ -119,8 +122,9 @@ function FileList({ pathClicked, addToPages }) {
                       ))
                     : fileList.map((x, index) => ( typeof x === 'object'?
                           <FileServer
+                              shared={pathClicked === "@SERVERSHARED@"}
                               path={String(x.id)}
-                              dane={x}
+                              dane={pathClicked !== "@SERVERSHARED@" ? x : x.file}
                               key={index}
                               pathClicked={pathClicked}
                               setReload={changeReload}
