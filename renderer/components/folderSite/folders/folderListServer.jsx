@@ -60,6 +60,7 @@ function FoldersServer({ path, show, pathClicked, setPathClicked, reload }) {
     setFolderList(folderListOfFolders(path));
     if (typeof window !== "undefined") {
       if (localStorage.getItem("jwtToken")) setShowSelf(true);
+      else setShowSelf(false)
     }
   }, [reload]);
   if (showSelf)

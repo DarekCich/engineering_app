@@ -1,7 +1,9 @@
+
 import styles from './file.module.css'
 import Icon from '../../../folderSite/icon/icon';
 import { fileRename, fileRemove } from '../../../../../main/backend/fileMenager';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 function File({path, pathClicked, setReload, setFileClicked, fileClicked, addToPages}){
     const [rename,              setRename] = useState(false);

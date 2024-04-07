@@ -1,44 +1,48 @@
 :root {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    --bg_color_dark_react:  #282c34;
-    --bg_color_dark_my:     #2B2B2B;
-    --ft_color_dark:        #D0D0D0;
-    --content_color_dark1:  #363636;
-    --content_color_dark2:  #3C3C3C;
-    --content_color_dark3:  #3E3E3E;
-    --frame_color_dark:     #858585;
-    --curve_high:           15px;
-    --curve_mid:            10px;
-    --curve_low:            5px;
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    --bg_color_dark_react: #282c34;
+    --bg_color_dark_my: #2B2B2B;
+    --ft_color_dark: #D0D0D0;
+    --content_color_dark1: #363636;
+    --content_color_dark2: #3C3C3C;
+    --content_color_dark3: #3E3E3E;
+    --frame_color_dark: #858585;
+    --curve_high: 15px;
+    --curve_mid: 10px;
+    --curve_low: 5px;
 }
+
 .quill {
-  box-sizing: border-box;
-  height: 100%;
-  border-radius: 15px;
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: 15px;
 }
+
 .ql-toolbar.ql-snow {
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  height: 10%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 10%;
 
 }
+
 .ql-container.ql-snow {
-  height: 90%;
+    height: 90%;
 }
+
 .ql-snow .ql-picker-label {
-  cursor: pointer;
-  display: inline-block;
-  height: 100%;
-  padding-left: 8px;
-  padding-right: 2px;
-  position: relative;
-  width: 100%;
-  color:#ccc;
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    padding-left: 8px;
+    padding-right: 2px;
+    position: relative;
+    width: 100%;
+    color: #ccc;
 }
 
 
 .ql-snow .ql-formats {
-  vertical-align: none;
+    vertical-align: none;
 }
