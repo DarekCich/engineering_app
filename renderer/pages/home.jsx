@@ -6,11 +6,15 @@ import styles from "../../Style/home.module.css";
 import HomePage from "./homePage";
 import OptionsPage from "./options/options";
 import MyComponent from "./editor/edit";
+import Bubble from "./helpers/bubble";
 
 function Home() {
     const [paths, setPaths] = useState([]);
     const [actualPage, setActualPage] = useState(null);
-
+    const [bubbleMessage, setBubbleMessage] = useState("");
+    const handleCloseBubble = () => {
+        setBubbleMessage(""); // Funkcja zamykająca dymek
+    };
     const addToPages = (path) => {
         if (paths.includes(path)) setActualPage(path);
         else setPaths([...paths, path]);
@@ -53,20 +57,21 @@ function Home() {
                 </div>
                 <div className={styles.pages}>
                     <div className={actualPage === null ? styles.showed : styles.notShowed}>
-                        <HomePage addToPages={addToPages} />
+                        <HomePage addToPages={addToPages} setBubbleMessage={setBubbleMessage} />
                     </div>
                     <div className={actualPage === -1 ? styles.showed : styles.notShowed}>
-                        <OptionsPage />
+                        <OptionsPage setBubbleMessage={setBubbleMessage} />
                     </div>
                     {paths.map((x, index) => (
                         <div
                             className={x === actualPage ? styles.showed : styles.notShowed}
                             key={index}
                         >
-                            <MyComponent path={x} />
+                            <MyComponent path={x} setBubbleMessage={setBubbleMessage} />
                         </div>
                     ))}
                 </div>
+                {bubbleMessage && <Bubble message={bubbleMessage} onClose={handleCloseBubble} />}
             </div>
         </>
     );

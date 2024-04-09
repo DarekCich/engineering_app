@@ -25,8 +25,8 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
                     console.log("Odpowiedź od serwera:", response);
                     axios.defaults.headers["Authorization"] = "Token " + response.data.token;
                     localStorage.setItem("jwtToken", axios.defaults.headers["Authorization"]);
-                    setBubbleMessage("Zalogowano");
                     setUserLogin(axios.defaults.headers["Authorization"]);
+                    setBubbleMessage("Zalogowano");
                 })
                 .catch((error) => {
                     setBubbleMessage("Błąd w trakcie logowania");
@@ -71,11 +71,10 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
                 })
                 .catch((error) => {
                     console.error("Błąd podczas wysyłania danych:", error);
-                    setBubbleMessage("Błąd");
+                    localStorage.setItem("jwtToken", "");
+                    setBubbleMessage("Błąd połączenia z serwerem");
                 });
         }
-
-        // ping czy jeszcze token jest ważny
     }
 
     return (

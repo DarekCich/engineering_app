@@ -3,8 +3,6 @@ export function fileRemove(path) {
 
     fs.unlink(path, (err) => {
         if (err) console.error("Błąd podczas usuwania pliku:", err);
-        // else
-        //   console.log('Plik został usunięty.');
     });
 }
 export async function fileCreate(name, num) {
@@ -37,7 +35,6 @@ export function fileRename(pathD, old, newname) {
 export function fileListOfFiles(path) {
     const fs = window.require("fs");
     let tab = [];
-
     if (!fs.existsSync(path)) return [-1];
 
     try {
@@ -59,27 +56,12 @@ export function fileListOfFiles(path) {
     }
 }
 
-// export async function fileListOfFilesOnServer() {
-//     const axios = window.require("axios");
-//     axios
-//     .get("http://localhost:8000/api/files/")
-//     .then((response) => {
-//         return response.body;
-//     })
-//     .catch((error) => {
-//         return [-1];
-//     });
-// }
-
-function fileIsDirectory(path) {
+export function readFile(filePath) {
     const fs = window.require("fs");
-    fs.lstat(path, (err, stats) => {
-        if (err) {
-            console.error(err);
-            return false;
-        }
-
-        if (stats.isDirectory()) return true;
-        else return false;
-    });
+    try {
+        const content = fs.readFileSync(filePath, "utf8");
+        return content;
+    } catch (error) {
+        return "";
+    }
 }

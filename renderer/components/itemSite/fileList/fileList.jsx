@@ -5,9 +5,7 @@ import { fileListOfFiles, fileCreate, fileRename } from "../../../../main/backen
 import File from "./file/file";
 import FileServer from "./file/fileServer";
 
-function FileList({ pathClicked, addToPages }) {
-    const [fileList, setfileList] = useState([]);
-    const [fileClicked, setFileClicked] = useState("");
+function FileList({ pathClicked, addToPages, fileList, setfileList, fileClicked, setFileClicked, setBubbleMessage }) {
     const [reload, setReload] = useState(false);
 
     const newFile = async () => {
@@ -25,8 +23,11 @@ function FileList({ pathClicked, addToPages }) {
     };
 
     const fileListOfFilesOnServertest = async () => {
-        let tmp = []
-        const url = pathClicked === "@SERVER@" ? "http://localhost:8000/api/files/" : "http://localhost:8000/api/sharedfiles/"
+        let tmp = [];
+        const url =
+            pathClicked === "@SERVER@"
+                ? "http://localhost:8000/api/files/"
+                : "http://localhost:8000/api/sharedfiles/shared_file_to_me/";
         try {
             const axios = require("axios"); // Importujemy axios tutaj
             if (localStorage.getItem("jwtToken")) {
@@ -109,30 +110,38 @@ function FileList({ pathClicked, addToPages }) {
             </div>
             <div className={styles.files}>
                 {pathClicked !== "@SERVER@" && pathClicked !== "@SERVERSHARED@"
-                    ? fileList.map((x, index) => ( typeof x !== 'object'?
-                          <File
-                              path={x}
-                              key={index}
-                              pathClicked={pathClicked}
-                              setReload={changeReload}
-                              fileClicked={fileClicked}
-                              setFileClicked={setFileClicked}
-                              addToPages={addToPages}
-                          ></File> : null
-                      ))
-                    : fileList.map((x, index) => ( typeof x === 'object'?
-                          <FileServer
-                              shared={pathClicked === "@SERVERSHARED@"}
-                              path={String(x.id)}
-                              dane={pathClicked !== "@SERVERSHARED@" ? x : x.file}
-                              key={index}
-                              pathClicked={pathClicked}
-                              setReload={changeReload}
-                              fileClicked={fileClicked}
-                              setFileClicked={setFileClicked}
-                              addToPages={addToPages}
-                          ></FileServer> : null
-                      ))}
+                    ? fileList.map((x, index) =>
+                          typeof x !== "object" ? (
+                              <File
+                                  path={x}
+                                  key={index}
+                                  pathClicked={pathClicked}
+                                  setReload={changeReload}
+                                  fileClicked={fileClicked}
+                                  setFileClicked={setFileClicked}
+                                  addToPages={addToPages}
+                                  changeReload={changeReload}
+                                  setBubbleMessage={setBubbleMessage}
+                              ></File>
+                          ) : null
+                      )
+                    : fileList.map((x, index) =>
+                          typeof x === "object" ? (
+                              <FileServer
+                                  shared={pathClicked === "@SERVERSHARED@"}
+                                  path={String(x.id)}
+                                  dane={pathClicked !== "@SERVERSHARED@" ? x : x.file}
+                                  key={index}
+                                  pathClicked={pathClicked}
+                                  setReload={changeReload}
+                                  fileClicked={fileClicked}
+                                  setFileClicked={setFileClicked}
+                                  addToPages={addToPages}
+                                  changeReload={changeReload}
+                                  setBubbleMessage={setBubbleMessage}
+                              ></FileServer>
+                          ) : null
+                      )}
             </div>
         </div>
     );

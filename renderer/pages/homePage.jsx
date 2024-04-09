@@ -4,7 +4,7 @@ import styles from "../../Style/homePage.module.css";
 import ItemsSite from "../components/itemSite/itemsSite";
 import FolderSite from "../components/folderSite/folderSite";
 
-function HomePage({ addToPages }) {
+function HomePage({ addToPages,setBubbleMessage }) {
     const [pathClicked, setPathClicked] = useState("");
     return (
         <React.Fragment>
@@ -14,7 +14,7 @@ function HomePage({ addToPages }) {
             <div className={styles.homePage}>
                 <div className={styles.content}>
                     <FolderSite pathClicked={pathClicked} setPathClicked={setPathClicked} />
-                    <ItemsSite pathClicked={pathClicked} addToPages={addToPages} />
+                    <ItemsSite pathClicked={pathClicked} addToPages={addToPages} setBubbleMessage={setBubbleMessage} />
                 </div>
             </div>
         </React.Fragment>

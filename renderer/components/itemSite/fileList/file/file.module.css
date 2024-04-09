@@ -1,4 +1,4 @@
-.file{
+.file {
     z-index: 0;
     box-sizing: border-box;
     padding-top: 2%;
@@ -14,23 +14,27 @@
     white-space: normal;
     overflow: hidden;
 }
-.buttonDelImg{
+
+.buttonDelImg {
     max-height: 12px;
 }
-.name{
+
+.name {
     padding-top: 4%;
     width: 90%;
 }
 
-.file:hover{
+.file:hover {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.inputName{
-  z-index: 1;
+
+.inputName {
+    z-index: 1;
     width: 90%;
 }
-.isClicked{
+
+.isClicked {
     display: flex;
     height: 100%;
     width: 100%;
@@ -44,7 +48,8 @@
     border-radius: 15px;
     border-bottom: 3px solid #2ea300;
 }
-.isntClicked{
+
+.isntClicked {
     display: flex;
     height: 100%;
     width: 100%;
@@ -56,15 +61,18 @@
     white-space: normal;
     overflow: hidden;
 }
-.buttonDel:active{
+
+.buttonDel:active {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding-top: 5px;
 }
-.buttonDel:hover{
+
+.buttonDel:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding-bottom: 5px; 
+    padding-bottom: 5px;
 }
-.buttonDel{
+
+.buttonDel {
     display: flex;
     align-items: center;
     align-content: center;
@@ -81,20 +89,73 @@
     width: 18px;
     height: 18px;
 }
-.imgAndButton{
+
+.imgAndButton {
     display: flex;
     align-items: center;
     position: relative;
 }
-@media only screen and (max-width: 800px) {   
-    .file{
+
+@media only screen and (max-width: 800px) {
+    .file {
         margin-top: 0;
         max-height: 65%;
     }
 }
-@media only screen and (max-width: 500px) {   
-    .file{
+
+@media only screen and (max-width: 500px) {
+    .file {
         max-height: 60%;
         width: 30%;
     }
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.subTitle {
+    font-size: 1.7rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formContainer {
+    text-align: center;
+    position: fixed;
+    top: 25px;
+    /* odległość od dołu ekranu */
+    left: 50%;
+    /* poziome centrowanie */
+    transform: translateX(-50%);
+    background-color: #333;
+    /* kolor tła */
+    color: #fff;
+    /* kolor tekstu */
+    padding: 10px 20px;
+    /* wewnętrzne marginesy */
+    border-radius: 20px;
+    /* zaokrąglenie rogów */
+    z-index: 999;
+    /* ustalenie warstwy */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* cień */
+    display: flex;
+    flex-direction: column;
+    border: solid 2px #858585;
+
+}
+
+.input {
+    font-size: 1.25rem;
+    text-align: center;
+}
+.formContainer input:focus {
+    border-color: blue;
+}
+.input:focus {
+    border: solid 2px #2ea300 !important;
 }
