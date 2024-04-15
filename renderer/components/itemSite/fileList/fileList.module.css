@@ -2,7 +2,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 40%;
-    background: #3E3E3E;
+    background: var(--file-list-color);
     border: solid 2px #858585;
     border-radius: 15px;
     overflow: hidden;
@@ -12,7 +12,7 @@
     width: 100%;
     height: 6%;
     border-radius: 15px 15px 5px 5px;
-    background: #494949;
+    background: var(--tab-hover-color);
     border-bottom: solid 2px #858585;
     display: flex;
     min-height: 35px;
@@ -64,7 +64,6 @@
         box-sizing: border-box;
         width: 100%;
         height: 45%;
-        background: #3E3E3E;
         border: solid 2px #858585;
         border-radius: 15px
     }
@@ -73,7 +72,6 @@
         height: 10%;
         min-height: 35px;
         border-radius: 15px 15px 5px 5px;
-        background: #494949;
         border-bottom: solid 2px #858585;
         display: flex;
     }

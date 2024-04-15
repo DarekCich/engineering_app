@@ -8,7 +8,10 @@ import OptionsPage from "./options/options";
 import MyComponent from "./editor/edit";
 import Bubble from "./helpers/bubble";
 
+
+
 function Home() {
+    const [isDark, setIsDark] = useState(true);
     const [paths, setPaths] = useState([]);
     const [actualPage, setActualPage] = useState(null);
     const [bubbleMessage, setBubbleMessage] = useState("");
@@ -33,7 +36,7 @@ function Home() {
             <Head>
                 <title>Home</title>
             </Head>
-            <div className={styles.homePage}>
+            <div className={styles.homePage} data-theme={isDark ? "dark" : "light"}>
                 <div className={styles.bar}>
                     <img
                         src="/images/icony.png"
@@ -45,9 +48,15 @@ function Home() {
                         src="/images/opcje.png"
                         alt="opcje"
                         onClick={() => setActualPage(-1)}
-                        className={styles.mainMenu}
+                        className={styles.mainMenu +' '+ styles.reverse}
                     />
-
+                    <input
+                        type="checkbox"
+                        id="check"
+                        className="toggle"
+                        onChange={() => setIsDark(!isDark)}
+                        checked={isDark}
+                    />
                     {paths.map((x, index) => (
                         <div className={styles.tab} key={index} onClick={() => setActualPage(x)}>
                             {x}

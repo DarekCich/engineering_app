@@ -1,0 +1,14 @@
+.menu{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 90%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.frame{
+    height: 80vh;
+    width: 90%;
+}
+

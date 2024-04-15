@@ -1,7 +1,7 @@
 .iconsFolderButtons{
   width: 25px;
   height: 25px;
-  filter: invert(100);
+  filter: var(--reverse-invert);
 }
 .folderButton{
   align-items: center;

@@ -12,6 +12,27 @@
     --curve_high: 15px;
     --curve_mid: 10px;
     --curve_low: 5px;
+
+    --bar-color:#363636;
+    --pages-color:#2B2B2B;
+    --tab-font-color:rgba(240, 248, 255, 0.575);
+    --tab-hover-color:#494949;
+    --file-list-color:#3E3E3E;
+    
+    --folder-font-color:#e6e0e0;
+
+    --reverse-invert: invert(100);
+}
+[data-theme="light"] {
+    --bar-color:#b9b9b9;
+    --reverse-invert: none;
+    --bar-color: #FFFFFF; 
+    --pages-color: #F0F0F0; 
+    --tab-font-color: #000000;
+    --tab-hover-color: #CCCCCC;
+    --file-list-color: #E0E0E0;
+
+    --folder-font-color:#1d1d1d;
 }
 
 .quill {

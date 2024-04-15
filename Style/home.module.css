@@ -1,16 +1,18 @@
 .homePage {
     box-sizing: border-box;
-    background: #2B2B2B;
+    background: var(--pages-color);
     margin: -8px -8px;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
-
+.reverse{
+    filter: var(--reverse-invert);
+}
 .bar {
     display: flex;
     box-sizing: border-box;
-    background: #363636;
+    background: var(--bar-color);
     width: 100vw;
     padding: 0 1vw;
     height: 4%;
@@ -30,7 +32,7 @@
 }
 
 .bar::-webkit-scrollbar-thumb {
-    background-color: #818181af;
+    background-color: #81818100;
     /* Kolor paska przewijania */
     -webkit-appearance: none;
     border-radius: 5px;
@@ -49,7 +51,7 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-color: #2B2B2B;
+    background-color: var(--pages-color);
     display: flex;
 }
 
@@ -62,12 +64,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(240, 248, 255, 0.575);
+    color: var(--tab-font-color);
 
 }
 
 .showed {
-    background-color: #2B2B2B;
+    background-color: var(--pages-color);
     width: 100%;
     height: 100%;
 }
@@ -79,20 +81,18 @@
 }
 
 .tab:hover {
-    background-color: #494949;
+    background-color: var(--tab-hover-color);
 }
 
 @media only screen and (max-width: 800px) {
     .bar {
         display: flex;
         box-sizing: border-box;
-        background: #363636;
         width: 100%;
         padding: 0 1%;
         height: 8%;
         min-height: 30px;
         max-height: 40px;
-        border-bottom: solid 2px #858585;
         border-radius: 0 0 5px 5px;
     }
 
@@ -101,9 +101,7 @@
         width: 95vw;
         height: 90%;
         margin: 2vh 2.5vw;
-        background: #363636;
         border-radius: 15px;
-        border: solid 2px #858585;
         padding: 2% 3%;
         display: flex;
         flex-direction: column;

@@ -16,7 +16,12 @@ function FileServer({
     addToPages,
     changeReload,
 }) {
-    const nazwa = (dane.nazwa) ? dane.nazwa : dane.file.nazwa;
+    let nazwa = ""
+    if (dane)
+        if (dane.nazwa)
+            nazwa = dane.nazwa
+        else
+            nazwa =dane.file.nazwa
     const [rename, setRename] = useState(false);
     const [newName, setNewName] = useState(nazwa);
     const [showForm, setShowForm] = useState(false);

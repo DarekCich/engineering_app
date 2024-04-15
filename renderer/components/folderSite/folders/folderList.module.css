@@ -18,7 +18,7 @@
     min-height: 2vh;
     display: flex;
     align-items: center;
-    color: antiquewhite;
+    color: var(--folder-font-color);
 }
 
 .folderBox {
@@ -93,7 +93,7 @@
 
 .folderImg {
 
-    filter: invert(100);
+    filter: var(--reverse-invert);
     align-items: center;
     justify-items: center;
     display: flex;
@@ -119,6 +119,7 @@
     width: 100%;
     height: 100%;
     display: flex;
+    color: var(--folder-font-color);
 }
 
 .deleteButton {

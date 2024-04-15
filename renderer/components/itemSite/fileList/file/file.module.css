@@ -8,7 +8,7 @@
     width: 23%;
     max-height: 50%;
     text-align: center;
-    color: antiquewhite;
+    color: var( --folder-font-color);
     align-items: center;
     overflow-wrap: break-word;
     white-space: normal;
