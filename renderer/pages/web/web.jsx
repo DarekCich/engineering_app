@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import LoginPage from "./login/logowanie";
-import MenuPage from "./menu/menu";
+import LoginPage from "./login/login";
+import MenuPage from "./menu/website";
 
-function OptionsPage({setBubbleMessage}) {
+function WebPage({ setBubbleMessage }) {
     const [userLogin, setuserLogin] = useState(axios.defaults.headers.common["Authorization"]);
     return (
         <div>
@@ -16,4 +16,4 @@ function OptionsPage({setBubbleMessage}) {
     );
 }
 
-export default OptionsPage;
+export default WebPage;

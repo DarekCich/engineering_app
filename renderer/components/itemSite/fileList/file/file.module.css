@@ -8,7 +8,7 @@
     width: 23%;
     max-height: 50%;
     text-align: center;
-    color: var( --folder-font-color);
+    color: var(--folder-font-color);
     align-items: center;
     overflow-wrap: break-word;
     white-space: normal;
@@ -153,9 +153,11 @@
     font-size: 1.25rem;
     text-align: center;
 }
+
 .formContainer input:focus {
     border-color: blue;
 }
+
 .input:focus {
     border: solid 2px #2ea300 !important;
 }

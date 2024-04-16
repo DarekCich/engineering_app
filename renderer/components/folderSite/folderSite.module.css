@@ -1,139 +1,149 @@
-.folderSite{
-  box-sizing: border-box;
-  height: 100%;
-  width: 40%;
-  background: var(--file-list-color);
-  border: solid 2px #858585;
-  border-radius: 15px;
-  scrollbar-width: thin; /* Ustawienie grubości paska przewijania */
-  scrollbar-color: #ccc transparent; /* Kolor paska przewijania */;
+.folderSite {
+    box-sizing: border-box;
+    height: 100%;
+    width: 40%;
+    background: var(--file-list-color);
+    border: solid 2px #858585;
+    border-radius: 15px;
+    scrollbar-width: thin;
+    /* Ustawienie grubości paska przewijania */
+    scrollbar-color: #ccc transparent;
+    /* Kolor paska przewijania */
+    ;
 }
 
-.folderBar{
-  width: 100%;
-  height: 6%;
-  border-radius: 15px 15px 5px 5px;
-  background: var( --tab-hover-color);
-  border-bottom: solid 2px #858585;
-  display: flex;
-  min-height: 35px;
+.folderBar {
+    width: 100%;
+    height: 6%;
+    border-radius: 15px 15px 5px 5px;
+    background: var(--tab-hover-color);
+    border-bottom: solid 2px #858585;
+    display: flex;
+    min-height: 35px;
 }
 
-.folderName{
-  box-sizing: border-box;
-  margin-left: 4%;
-  width: 60%;
-  height: 94%;
-  display: flex;
-  align-items: center;
-  color: aliceblue;
-  font-size: 150%;
-  cursor: default;
+.folderName {
+    box-sizing: border-box;
+    margin-left: 4%;
+    width: 60%;
+    height: 94%;
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    font-size: 150%;
+    cursor: default;
 }
 
-.folderButtons{
-  margin-left: 2%;
-  height: 100%;
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  justify-content: right;
-}
-
-.folders{
-  box-sizing: border-box;
-  height: 93%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  overflow-x: auto;
-  width: 98%;
-  margin-left: 1%;
-  margin-top: 1%;
+.folderButtons {
+    margin-left: 2%;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: right;
 }
 
 .folders {
-  margin-bottom: 10px
-}
-
-.folders::-webkit-scrollbar {
-  width: 5px;
-  height: 5px; /* Szerokość paska przewijania */
-  appearance: none;
-}
-
-.folders::-webkit-scrollbar-thumb {
-  background-color: #818181af; /* Kolor paska przewijania */
-  -webkit-appearance: none;
-  border-radius: 5px; /* Zaokrąglenie paska przewijania */
-  appearance: none;
-}
-
-.folders::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa; /* Kolor paska przewijania po najechaniu myszką */
-  padding-bottom: 10px;
-  appearance: none;
-}
-
-.folders::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Ukryj domyślny wygląd suwaka */
-  appearance: none;
-  background-color: transparent; /* Ustaw przezroczysty kolor tła */
-  border: none; /* Usuń obramowanie */
-}
-
-/* Dla suwaków w innych przeglądarkach */
-.folders::-moz-range-thumb {
-  background-color: transparent;
-  appearance: none;
-  border: none;
-}
-
-/* Dla suwaków w przeglądarkach nowszych wersji */
-.folders::-ms-thumb {
-  background-color: transparent;
-  appearance: none;
-  border: none;
-}
-
-@media only screen and (max-width: 800px) {
-  .folderSite{
     box-sizing: border-box;
-    height: 45%;
-    width: 100%;
-    border: solid 2px #858585;
-    border-radius: 15px
-  }
-
-  .folderBar{
-    width: 100%;
-    height: 10%;
-    min-height: 35px;
-    border-radius: 15px 15px 5px 5px;
-    border-bottom: solid 2px #858585;
-    display: flex;
-  }
-
-  .folderName{
-    margin-left: 4%;
-    box-sizing: border-box;
-    width: 60%;
-    height: 90%;
-    display: flex;
-    padding: 1% 0;
-    color: var( --folder-font-color);
-    font-size: 150%;
-  }
-
-  .folders{
-    box-sizing: border-box;
-    width: 90%;
-    height: 85%;
+    height: 93%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     overflow-x: auto;
-  }
-  
+    width: 98%;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.folders {
+    margin-bottom: 10px
+}
+
+.folders::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    /* Szerokość paska przewijania */
+    appearance: none;
+}
+
+.folders::-webkit-scrollbar-thumb {
+    background-color: #818181af;
+    /* Kolor paska przewijania */
+    -webkit-appearance: none;
+    border-radius: 5px;
+    /* Zaokrąglenie paska przewijania */
+    appearance: none;
+}
+
+.folders::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+    /* Kolor paska przewijania po najechaniu myszką */
+    padding-bottom: 10px;
+    appearance: none;
+}
+
+.folders::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Ukryj domyślny wygląd suwaka */
+    appearance: none;
+    background-color: transparent;
+    /* Ustaw przezroczysty kolor tła */
+    border: none;
+    /* Usuń obramowanie */
+}
+
+/* Dla suwaków w innych przeglądarkach */
+.folders::-moz-range-thumb {
+    background-color: transparent;
+    appearance: none;
+    border: none;
+}
+
+/* Dla suwaków w przeglądarkach nowszych wersji */
+.folders::-ms-thumb {
+    background-color: transparent;
+    appearance: none;
+    border: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .folderSite {
+        box-sizing: border-box;
+        height: 45%;
+        width: 100%;
+        border: solid 2px #858585;
+        border-radius: 15px
+    }
+
+    .folderBar {
+        width: 100%;
+        height: 10%;
+        min-height: 35px;
+        border-radius: 15px 15px 5px 5px;
+        border-bottom: solid 2px #858585;
+        display: flex;
+    }
+
+    .folderName {
+        margin-left: 4%;
+        box-sizing: border-box;
+        width: 60%;
+        height: 90%;
+        display: flex;
+        padding: 1% 0;
+        color: var(--folder-font-color);
+        font-size: 150%;
+    }
+
+    .folders {
+        box-sizing: border-box;
+        width: 90%;
+        height: 85%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        overflow-x: auto;
+    }
+
 }

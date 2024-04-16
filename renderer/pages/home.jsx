@@ -4,11 +4,9 @@ import "../../Style/main.css";
 import Head from "next/head";
 import styles from "../../Style/home.module.css";
 import HomePage from "./homePage";
-import OptionsPage from "./options/options";
+import WebPage from "./web/web";
 import MyComponent from "./editor/edit";
 import Bubble from "./helpers/bubble";
-
-
 
 function Home() {
     const [isDark, setIsDark] = useState(true);
@@ -46,9 +44,9 @@ function Home() {
                     />
                     <img
                         src="/images/opcje.png"
-                        alt="opcje"
+                        alt="web"
                         onClick={() => setActualPage(-1)}
-                        className={styles.mainMenu +' '+ styles.reverse}
+                        className={styles.mainMenu + " " + styles.reverse}
                     />
                     <input
                         type="checkbox"
@@ -69,7 +67,7 @@ function Home() {
                         <HomePage addToPages={addToPages} setBubbleMessage={setBubbleMessage} />
                     </div>
                     <div className={actualPage === -1 ? styles.showed : styles.notShowed}>
-                        <OptionsPage setBubbleMessage={setBubbleMessage} />
+                        <WebPage setBubbleMessage={setBubbleMessage} />
                     </div>
                     {paths.map((x, index) => (
                         <div

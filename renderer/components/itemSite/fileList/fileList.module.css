@@ -1,4 +1,4 @@
-.fileList{
+.fileList {
     box-sizing: border-box;
     width: 100%;
     height: 40%;
@@ -6,9 +6,10 @@
     border: solid 2px #858585;
     border-radius: 15px;
     overflow: hidden;
-    
+
 }
-.fileBar{
+
+.fileBar {
     width: 100%;
     height: 6%;
     border-radius: 15px 15px 5px 5px;
@@ -17,7 +18,8 @@
     display: flex;
     min-height: 35px;
 }
-.folderName{
+
+.folderName {
     box-sizing: border-box;
     margin-left: 4%;
     width: 60%;
@@ -29,7 +31,8 @@
     cursor: default;
     border: none;
 }
-.fileButtons{
+
+.fileButtons {
     margin-left: 2%;
     height: 100%;
     width: 30%;
@@ -38,36 +41,43 @@
     justify-items: center;
     justify-content: right;
 }
-.files{
+
+.files {
     margin: 1%;
     display: flex;
     flex-wrap: wrap;
     width: 98%;
     height: 82%;
     box-sizing: border-box;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
+
 .files::-webkit-scrollbar {
     width: 5px;
-    height: 5px; /* Szerokość paska przewijania */
+    height: 5px;
+    /* Szerokość paska przewijania */
     appearance: none;
 }
 
 .files::-webkit-scrollbar-thumb {
-    background-color: #818181af; /* Kolor paska przewijania */
+    background-color: #818181af;
+    /* Kolor paska przewijania */
     -webkit-appearance: none;
-    border-radius: 5px; /* Zaokrąglenie paska przewijania */
+    border-radius: 5px;
+    /* Zaokrąglenie paska przewijania */
     appearance: none;
 }
-@media only screen and (max-width: 800px) {   
-    .fileList{
+
+@media only screen and (max-width: 800px) {
+    .fileList {
         box-sizing: border-box;
         width: 100%;
         height: 45%;
         border: solid 2px #858585;
         border-radius: 15px
     }
-    .fileBar{
+
+    .fileBar {
         width: 100%;
         height: 10%;
         min-height: 35px;
@@ -75,7 +85,8 @@
         border-bottom: solid 2px #858585;
         display: flex;
     }
-    .folderName{
+
+    .folderName {
         margin-left: 4%;
         box-sizing: border-box;
         width: 60%;
@@ -85,7 +96,8 @@
         color: aliceblue;
         font-size: 150%;
     }
-    .files{
+
+    .files {
         height: 75%;
     }
 }

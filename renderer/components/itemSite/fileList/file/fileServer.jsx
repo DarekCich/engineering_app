@@ -16,12 +16,10 @@ function FileServer({
     addToPages,
     changeReload,
 }) {
-    let nazwa = ""
+    let nazwa = "";
     if (dane)
-        if (dane.nazwa)
-            nazwa = dane.nazwa
-        else
-            nazwa =dane.file.nazwa
+        if (dane.nazwa) nazwa = dane.nazwa;
+        else nazwa = dane.file.nazwa;
     const [rename, setRename] = useState(false);
     const [newName, setNewName] = useState(nazwa);
     const [showForm, setShowForm] = useState(false);
@@ -92,7 +90,7 @@ function FileServer({
         function handleClickOutside(event) {
             if (!event.target.closest(`.${styles.formContainer}`)) {
                 setShowForm(false);
-        }
+            }
         }
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
@@ -106,10 +104,9 @@ function FileServer({
                 <div className={styles.formContainer}>
                     <div className={styles.title}>Udostępnianie pliku</div>
                     <div className={styles.subTitle}>{nazwa}</div>
-                    
+
                     <label htmlFor="username"> użytkownikowi:</label>
                     <form onSubmit={handleFormSubmit} className={styles.form}>
-                        
                         <input
                             id="username"
                             type="text"

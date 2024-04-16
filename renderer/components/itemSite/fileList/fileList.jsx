@@ -5,7 +5,15 @@ import { fileListOfFiles, fileCreate, fileRename } from "../../../../main/backen
 import File from "./file/file";
 import FileServer from "./file/fileServer";
 
-function FileList({ pathClicked, addToPages, fileList, setfileList, fileClicked, setFileClicked, setBubbleMessage }) {
+function FileList({
+    pathClicked,
+    addToPages,
+    fileList,
+    setfileList,
+    fileClicked,
+    setFileClicked,
+    setBubbleMessage,
+}) {
     const [reload, setReload] = useState(false);
 
     const newFile = async () => {
@@ -59,8 +67,6 @@ function FileList({ pathClicked, addToPages, fileList, setfileList, fileClicked,
         }
     };
 
-    const click = () => {};
-
     useEffect(() => {
         setfileList([]);
         if (typeof window !== "undefined") {
@@ -104,7 +110,7 @@ function FileList({ pathClicked, addToPages, fileList, setfileList, fileClicked,
                         pathClicked.split("/").pop()}
                 </div>
                 <div className={styles.fileButtons}>
-                    <MenuButton url="/images/reload.png" onClick={click}></MenuButton>
+                    <MenuButton url="/images/reload.png" onClick={changeReload}></MenuButton>
                     <MenuButton url="/images/addFile.png" onClick={newFile}></MenuButton>
                 </div>
             </div>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import styles from "./logowanie.module.css";
+import styles from "./login.module.css";
 import axios from "axios";
-import { headers } from "next/dist/client/components/headers";
 
 function LoginPage({ setUserLogin, setBubbleMessage }) {
     const [formData, setFormData] = useState({
@@ -17,7 +16,7 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        axios.defaults.headers["Authorization"]= ""
         if (tryb === "logowanie") {
             axios
                 .post("http://localhost:8000/api/registers/user_login/", formData)

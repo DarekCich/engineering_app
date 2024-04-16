@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Menu, Item, Separator, Submenu, useContextMenu } from "react-contexify";
 import "react-contexify/ReactContexify.css";
-import {readFile} from "../../../../../main/backend/fileMenager.js"
+import { readFile } from "../../../../../main/backend/fileMenager.js";
 
-import  axios  from "axios";
+import axios from "axios";
 
 import styles from "./file.module.css";
 import Icon from "../../../folderSite/icon/icon";
@@ -66,19 +66,18 @@ function File({
         setRename(true);
     }
 
-    async function shareFile () {
-        let file = await readFile(pathClicked + "/" + path)
+    async function shareFile() {
+        let file = await readFile(pathClicked + "/" + path);
         let params = {
-            "nazwa": fileClicked,
-            "tresc": file
-        }
+            nazwa: fileClicked,
+            tresc: file,
+        };
         console.log(params);
-        await axios.post("http://127.0.0.1:8000/api/files/",params).catch((error) => {
+        await axios.post("http://127.0.0.1:8000/api/files/", params).catch((error) => {
             setBubbleMessage("błąd w trakcie wysyłania pliku");
             console.error("Błąd podczas wysyłania danych:", error);
         });
     }
-
 
     function displayMenu(e) {
         e.stopPropagation();
