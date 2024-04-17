@@ -14,7 +14,7 @@ function MenuPage({ setUserLogin }) {
             <button onClick={onClick}>wyloguj</button>
             <webview
                 className={styles.frame}
-                src="http://127.0.0.1:8000/api/web/files_public/"
+                src="http://127.0.0.1:8000/website/filespublic/"
             ></webview>
         </div>
     );
