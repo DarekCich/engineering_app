@@ -15,7 +15,7 @@ function MenuPage({ setUserLogin }) {
             <webview
                 className={styles.frame}
                 src="http://127.0.0.1:8000/website/filespublic/"
-            ></webview>
+            />
         </div>
     );
 }

@@ -23,7 +23,7 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
                 .then((response) => {
                     console.log("Odpowiedź od serwera:", response);
                     axios.defaults.headers["Authorization"] = "Token " + response.data.token;
-                    localStorage.setItem("jwtToken", axios.defaults.headers["Authorization"]);
+                    localStorage.setItem("djangoToken", axios.defaults.headers["Authorization"]);
                     setUserLogin(axios.defaults.headers["Authorization"]);
                     setBubbleMessage("Zalogowano");
                 })
@@ -51,26 +51,26 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
         }
     };
     if (typeof localStorage !== "undefined") {
-        if (localStorage.getItem("jwtToken")) {
+        if (localStorage.getItem("djangoToken")) {
             axios
                 .get("http://localhost:8000/api/registers/ping/", {
                     headers: {
-                        Authorization: localStorage.getItem("jwtToken"),
+                        Authorization: localStorage.getItem("djangoToken"),
                     },
                 })
                 .then((response) => {
                     if (response.status == 200) {
-                        axios.defaults.headers["Authorization"] = localStorage.getItem("jwtToken");
+                        axios.defaults.headers["Authorization"] = localStorage.getItem("djangoToken");
                         setUserLogin(axios.defaults.headers["Authorization"]);
                         setBubbleMessage("Zalogowano");
-                    } else if (response.status in (402, 403)) {
+                    } else if (response.status in (401, 403)) {
                         setBubbleMessage("Zaloguj się ponownie");
-                        localStorage.setItem("jwtToken", "");
+                        localStorage.setItem("djangoToken", "");
                     }
                 })
                 .catch((error) => {
                     console.error("Błąd podczas wysyłania danych:", error);
-                    localStorage.setItem("jwtToken", "");
+                    localStorage.setItem("djangoToken", "");
                     setBubbleMessage("Błąd połączenia z serwerem");
                 });
         }
