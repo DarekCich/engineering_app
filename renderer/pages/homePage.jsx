@@ -13,7 +13,11 @@ function HomePage({ addToPages, setBubbleMessage }) {
             </Head>
             <div className={styles.homePage}>
                 <div className={styles.content}>
-                    <FolderSite pathClicked={pathClicked} setPathClicked={setPathClicked} />
+                    <FolderSite
+                        pathClicked={pathClicked}
+                        setPathClicked={setPathClicked}
+                        setBubbleMessage={setBubbleMessage}
+                    />
                     <ItemsSite
                         pathClicked={pathClicked}
                         addToPages={addToPages}

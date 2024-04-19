@@ -44,7 +44,7 @@ function FoldersServer({ name, path, show, pathClicked, setPathClicked, reload }
     };
     useEffect(() => {
         if (typeof window !== "undefined") {
-            if (localStorage.getItem("jwtToken")) setShowSelf(true);
+            if (localStorage.getItem("djangoToken")) setShowSelf(true);
         }
     }, []);
 
@@ -59,7 +59,7 @@ function FoldersServer({ name, path, show, pathClicked, setPathClicked, reload }
     useEffect(() => {
         setFolderList(folderListOfFolders(path));
         if (typeof window !== "undefined") {
-            if (localStorage.getItem("jwtToken")) setShowSelf(true);
+            if (localStorage.getItem("djangoToken")) setShowSelf(true);
             else setShowSelf(false);
         }
     }, [reload]);

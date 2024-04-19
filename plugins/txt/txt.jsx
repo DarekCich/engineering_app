@@ -1,20 +1,22 @@
-import { saveFile } from "./txt";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import styles from "./txt.module.css";
 
-const txt = ({ file }) => {
-    const [text, setText] = useState(file);
+const txt = ({ file, setFile, save }) => {
+    const [content, setContent] = useState(file);
     const handleTextChange = (value) => {
-        setText(value.target.value);
+        setContent(value.target.value);
     };
-    const handleSaveFile = () => {
-        saveFile(file, text);
+    const handleSave = async () => {
+        save(content);
     };
-
+    useEffect(() => {
+        setContent(file);
+    }, [file]);
     return (
         <div>
-            <div className="editor">
-                <button onClick={handleSaveFile}>save</button>
-                <textarea value={text} onChange={handleTextChange} />
+            <div className={styles.editor}>
+                <button onClick={handleSave}>save</button>
+                <textarea className={styles.textarea} value={content} onChange={handleTextChange} />
             </div>
         </div>
     );

@@ -1,0 +1,32 @@
+.textarea{
+    color: var(--folder-font-color);
+    background-color: var(--bar-color);
+    min-width: 50%;
+    max-width: 95%;
+    min-height: 40%;
+}
+.body{
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    
+}
+.but{
+    font-size: 1.5rem;
+    width: 40%;
+    background-color: var(--file-list-color);
+}
+.preview{
+    color: var( --folder-font-color);
+    background-color: var(--file-list-color);
+    border-radius: var(--curve_mid);
+    height: 100%;
+    margin: 1rem;
+    padding: 1rem;
+    width: 80%;
+}

@@ -16,6 +16,9 @@ function Home() {
     const handleCloseBubble = () => {
         setBubbleMessage(""); // Funkcja zamykająca dymek
     };
+    const handleSetBubbleMessage = (message) => {
+        setBubbleMessage(message); // Funkcja zamykająca dymek
+    };
     const addToPages = (path) => {
         if (paths.includes(path)) setActualPage(path);
         else setPaths([...paths, path]);
@@ -57,7 +60,7 @@ function Home() {
                     />
                     {paths.map((x, index) => (
                         <div className={styles.tab} key={index} onClick={() => setActualPage(x)}>
-                            {x}
+                            {x.includes("//")? x.split("//")[0] : x}
                             <button onClick={() => deletePath(x)}>x</button>
                         </div>
                     ))}
@@ -74,7 +77,7 @@ function Home() {
                             className={x === actualPage ? styles.showed : styles.notShowed}
                             key={index}
                         >
-                            <MyComponent path={x} setBubbleMessage={setBubbleMessage} />
+                            <MyComponent path={x} setBubbleMessage={handleSetBubbleMessage} />
                         </div>
                     ))}
                 </div>

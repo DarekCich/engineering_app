@@ -1,3 +1,17 @@
+
+.body{
+    box-sizing: border-box;
+    height: 100%;
+    padding: 1rem;
+}
 .text{
-  color: antiquewhite;
+    color: var( --folder-font-color);
+}
+.file{
+    color: var( --folder-font-color);
+    background-color: var(--file-list-color);
+    border-radius: var(--curve_mid);
+    min-height: 50%;
+    margin: 1rem;
+    padding: 1rem;
 }

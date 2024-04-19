@@ -3,12 +3,16 @@ import MenuButton from "../buttons/menuButton";
 import FoldersMain from "./folders/folderListMain";
 import React, { useState } from "react";
 import { folderCreate } from "../../../main/backend/folderMenager";
-function FolderSite({ pathClicked, setPathClicked }) {
+function FolderSite({ pathClicked, setPathClicked, setBubbleMessage }) {
     const [reload, setReload] = useState(false);
     const click = () => {
         setReload(!reload);
     };
     const newFolder = async () => {
+        if(pathClicked.includes("@SERVER")){
+            setBubbleMessage("Nie można tworzyć folderów w zasobach sieciowych.")
+            return
+        }
         let tmp = pathClicked + "/newFolder";
         await folderCreate(tmp);
         setReload(!reload);

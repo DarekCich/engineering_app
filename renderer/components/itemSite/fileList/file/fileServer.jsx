@@ -1,7 +1,6 @@
 import styles from "./file.module.css";
 import Icon from "../../../folderSite/icon/icon";
 import { Menu, Item, Separator, Submenu, useContextMenu } from "react-contexify";
-import { fileRename, fileRemove } from "../../../../../main/backend/fileMenager";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
@@ -33,13 +32,16 @@ function FileServer({
     };
     const handleKeyDown = (event) => {
         if (event.key === "Enter" && rename) {
-            if (newName !== "") fileRename(pathClicked, path, newName);
+            if (newName !== "")
+                axios.patch(`http://127.0.0.1:8000/api/files/${dane.id}/`, { nazwa: newName });
             else setNewName(path);
             setRename(false);
-            setReload();
+            nazwa = newName;
         }
     };
-
+    const handleAddToPages = () => {
+        addToPages(nazwa + "//" + path + "//" + (shared ? "sh" : "my"));
+    };
     const deleteFile = () => {
         if (shared) axios.delete(`http://127.0.0.1:8000/api/sharedfiles/${dane.id}/`);
         else axios.delete(`http://127.0.0.1:8000/api/files/${dane.id}/`);
@@ -48,10 +50,11 @@ function FileServer({
 
     useEffect(() => {
         if (fileClicked !== path && rename) {
-            if (newName !== "") fileRename(pathClicked, path, newName);
+            if (newName !== "")
+                axios.patch(`http://127.0.0.1:8000/api/files/${dane.id}/`, { nazwa: newName });
             else setNewName(nazwa);
             setRename(false);
-            setReload();
+            nazwa = newName;
         }
     }, [fileClicked]);
 
@@ -61,15 +64,50 @@ function FileServer({
     });
 
     function handleItemClick({ event, props, triggerEvent, data }) {
+        if(shared){
+            axios.get(`http://127.0.0.1:8000/website/downloadshared/${String(dane.id)}/`, {responseType: 'blob'}).then(response => {
+                // Tworzenie obiektu URL z odpowiedzi
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                // Tworzenie linku do pobrania pliku
+                const link = document.createElement('a');
+                link.href = url;
+                // Ustawienie nazwy pliku na podstawie nagłówka Content-Disposition
+                const contentDisposition = response.headers['content-disposition'];
+                const filename = contentDisposition.split('filename=')[1];
+                link.setAttribute('download', filename.trim());
+                // Dodanie linku do dokumentu i kliknięcie w niego (uruchomienie pobierania pliku)
+                document.body.appendChild(link);
+                link.click();
+                // Usunięcie linku z dokumentu
+                document.body.removeChild(link);
+            })
+        }
+        else{
+            axios.get(`http://127.0.0.1:8000/website/downloadmy/6/`, {responseType: 'blob'}).then(response => {
+                // Tworzenie obiektu URL z odpowiedzi
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                // Tworzenie linku do pobrania pliku
+                const link = document.createElement('a');
+                link.href = url;
+                // Ustawienie nazwy pliku na podstawie nagłówka Content-Disposition
+                const contentDisposition = response.headers['content-disposition'];
+                const filename = contentDisposition.split('filename=')[1];
+                link.setAttribute('download', filename.trim());
+                // Dodanie linku do dokumentu i kliknięcie w niego (uruchomienie pobierania pliku)
+                document.body.appendChild(link);
+                link.click();
+                // Usunięcie linku z dokumentu
+                document.body.removeChild(link);
+            }).catch(error => console.log(error))
+        }
         console.log(event, props, triggerEvent, data);
     }
     function handleRename() {
-        setRename(true);
+        if (!shared) setRename(true);
     }
     function handleFormSubmit(event) {
         event.preventDefault();
-        // Dodaj logikę obsługi submita formularza (np. wysłanie danych)
-        console.log("Wysyłanie danych z formularza...");
+        axios.post("http://127.0.0.1:8000/api/sharedfiles/", { file: dane.id, user: usernameRef.current.value });
         setShowForm(false);
     }
 
@@ -115,7 +153,7 @@ function FileServer({
                             className={styles.input}
                         />
                         <button type="submit" className={styles.button}>
-                            Submit
+                            Udostępnij
                         </button>
                     </form>
                 </div>
@@ -125,9 +163,7 @@ function FileServer({
                 onClick={() => {
                     setFileClicked(path);
                 }}
-                onDoubleClick={() => {
-                    addToPages(pathClicked + "/" + path);
-                }}
+                onDoubleClick={handleAddToPages}
                 onContextMenu={displayMenu}
             >
                 <div className={fileClicked === path ? styles.isClicked : styles.isntClicked}>
@@ -169,22 +205,17 @@ function FileServer({
                 </div>
             </div>
             <Menu id={MENU_ID} className="contexify_theme-dark">
-                <Item
-                    onClick={() => {
-                        addToPages(pathClicked + "/" + path);
-                    }}
-                >
-                    Otwórz
-                </Item>
+                <Item onClick={handleAddToPages}>Otwórz</Item>
                 <Item onClick={handleRename}>Zmień nazwę</Item>
                 <Item onClick={changeReload}>Odśwież</Item>
                 <Separator />
                 <Item onClick={deleteFile}>Usuń</Item>
-                <Separator />
-                <Submenu label="Udostępnianie">
+                
+                {shared? null : <><Separator /> <Item onClick={toggleFormVisibility}>Udostępnij innym</Item></>}
+                {/* <Submenu label="Udostępnianie">
                     <Item onClick={handleItemClick}>Pobierz</Item>
-                    <Item onClick={toggleFormVisibility}>Udostępnij innym</Item>
-                </Submenu>
+                    
+                </Submenu> */}
             </Menu>
         </>
     );

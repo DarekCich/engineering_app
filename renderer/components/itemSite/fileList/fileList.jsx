@@ -17,6 +17,10 @@ function FileList({
     const [reload, setReload] = useState(false);
 
     const newFile = async () => {
+        if(pathClicked.includes("@SERVER")){
+            setBubbleMessage("Nie można tworzyć plików w zasobach sieciowych.")
+            return
+        }
         let tmp = pathClicked + "/newFile";
         await fileCreate(tmp);
         tmp = fileListOfFiles(pathClicked);
@@ -38,27 +42,11 @@ function FileList({
                 : "http://localhost:8000/api/sharedfiles/shared_file_to_me/";
         try {
             const axios = require("axios"); // Importujemy axios tutaj
-            if (localStorage.getItem("jwtToken")) {
-                await axios
-                    .get("http://localhost:8000/api/registers/ping/", {
-                        headers: {
-                            Authorization: localStorage.getItem("jwtToken"),
-                        },
-                    })
-                    .then((response) => {
-                        if (response.status == 200) {
-                            axios.defaults.headers["Authorization"] =
-                                localStorage.getItem("jwtToken");
-                        } else if (response.status in (402, 403)) {
-                            localStorage.setItem("jwtToken", "");
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Błąd podczas wysyłania danych:", error);
-                        setBubbleMessage("Błąd");
-                    });
-            }
-            const response = await axios.get(url);
+            const response = await axios.get(url,{
+                headers: {
+                    Authorization: typeof localStorage !== "undefined" ? localStorage.getItem("djangoToken"):null,
+                },
+            });
             tmp = response.data;
             setfileList(tmp);
             setFileClicked("");

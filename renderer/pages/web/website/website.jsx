@@ -5,7 +5,7 @@ import styles from "./website.module.css";
 function MenuPage({ setUserLogin }) {
     const onClick = () => {
         axios.defaults.headers["Authorization"] = "";
-        localStorage.setItem("jwtToken", "");
+        localStorage.setItem("djangoToken", "");
         setUserLogin("");
     };
     return (

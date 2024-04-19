@@ -52,10 +52,11 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
     };
     if (typeof localStorage !== "undefined") {
         if (localStorage.getItem("djangoToken")) {
+            console.log(localStorage.getItem("djangoToken"))
             axios
-                .get("http://localhost:8000/api/registers/ping/", {
+                .get('http://localhost:8000/api/files/', {
                     headers: {
-                        Authorization: localStorage.getItem("djangoToken"),
+                        Authorization: typeof localStorage !== "undefined" ? localStorage.getItem("djangoToken"):null,
                     },
                 })
                 .then((response) => {

@@ -1,31 +1,37 @@
 // RichTextEditor.js
 
-import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
+import React, { useState, useEffect } from "react";
+import ReactQuill from "react-quill";
 
-import styles from './ctf.module.css'; // Zaimportuj lokalne style CSS jako moduł CSS
+import styles from "./ctf.module.css"; // Zaimportuj lokalne style CSS jako moduł CSS
 
-const RichTextEditor = () => {
-  const [text, setText] = useState('');
+const RichTextEditor = ({file, save}) => {
+    const [text, setText] = useState(file);
 
-  const handleChange = (value) => {
-    setText(value);
-  };
+    const handleChange = (value) => {
+        setText(value);
+    };
+    const handleSave = async () => {
+        await save(text);
+    };
+    useEffect(() => {
+        setText(file);
+    }, [file]);
 
-  return (
-    <div className={styles.richTextEditorContainer}>
-      <h1 className={styles.richTextEditorHeader}>Rich Text Editor</h1>
-      <div className={styles.editor}>
-      <ReactQuill
-        value={text}
-        onChange={handleChange}
-        theme="snow"
-        className={styles.qlContainer}
-      />
-      </div>
-
-    </div>
-  );
+    return (
+        <div className={styles.richTextEditorContainer}>
+            <button onClick={handleSave}>save</button>
+            <h1 className={styles.richTextEditorHeader}>Rich Text Editor</h1>
+            <div className={styles.editor}>
+                <ReactQuill
+                    value={text}
+                    onChange={handleChange}
+                    theme="snow"
+                    className={styles.qlContainer}
+                />
+            </div>
+        </div>
+    );
 };
 
 export default RichTextEditor;

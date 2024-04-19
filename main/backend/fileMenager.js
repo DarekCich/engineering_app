@@ -65,3 +65,19 @@ export function readFile(filePath) {
         return "";
     }
 }
+export function writeFile(filePath, file) {
+    const fs = window.require("fs");
+    return new Promise((resolve, reject) => {
+        fs.writeFile(filePath, file, (error) => {
+            if (error) {
+                console.error(error);
+                reject("Błąd w trakcie zapisu");
+            } else {
+                resolve("Zapisano pomyślnie plik");
+            }
+        });
+    });
+}
+
+
+

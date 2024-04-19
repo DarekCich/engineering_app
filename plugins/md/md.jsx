@@ -1,33 +1,27 @@
-import React, { useState,useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { readFile,saveFile } from './md';
-const MarkdownEditor = ({file}) => {
-  const [text, setText] = useState('');
+import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import styles from "./md.module.css"
+const MarkdownEditor = ({ file, save }) => {
+    const [text, setText] = useState(file);
 
-  const handleTextChange = (value) => {
-    setText(value.target.value);
-  };
-  const handleSaveFile = () => {
-    saveFile(file,text)
-  }
-  useEffect(()=>{
-    let tmp = readFile(file)
-    setText(tmp);
-  },[])
-  return (
-    <div>
-      <div className="editor">
-      <button onClick={handleSaveFile}>save</button>
-      <textarea
-          value={text}
-          onChange={handleTextChange}
-        />
-      </div>
-      <div className="preview">
-        <ReactMarkdown>{text}</ReactMarkdown>
-      </div>
-    </div>
-  );
+    const handleTextChange = (value) => {
+        setText(value.target.value);
+    };
+    const handleSaveFile = () => {
+        save(text);
+    };
+    useEffect(() => {
+        setText(file)
+    }, [file]);
+    return (
+        <div className={styles.body}>
+            <button className={styles.but} onClick={handleSaveFile}>save</button>
+            <textarea className={styles.textarea} value={text} onChange={handleTextChange} />
+            <div className={styles.preview}>
+                <ReactMarkdown>{text}</ReactMarkdown>
+            </div>
+        </div>
+    );
 };
 
 export default MarkdownEditor;

@@ -21,7 +21,7 @@ function ItemsSite({ pathClicked, addToPages, setBubbleMessage }) {
                 {fileList.map((x, index) => {
                     if (x.id == fileClicked) {
                         return (
-                            <ul key={index}>
+                            <ul className={styles.detailUl} key={index}>
                                 <Szczegoly key={index} szczegoly={x} />
                             </ul>
                         );
@@ -35,22 +35,25 @@ function ItemsSite({ pathClicked, addToPages, setBubbleMessage }) {
 }
 
 function Szczegoly({ szczegoly }) {
-    return (
-        <>
-            {Object.keys(szczegoly).map((key, index) => {
-                if (typeof szczegoly[key] === "object") {
-                    return <Szczegoly key={index} szczegoly={szczegoly[key]} />;
-                } else {
-                    return (
-                        <li key={index}>
-                            <div>{key}</div>
-                            <div>{szczegoly[key]}</div>
-                        </li>
-                    );
-                }
-            })}
-        </>
-    );
+    if (szczegoly)
+        return (
+            <>
+                {Object.keys(szczegoly).map((key, index) => {
+                    if (["id", "tresc", "user"].includes(key)) null
+                    else if (typeof szczegoly[key] === "object") {
+                        return <Szczegoly key={index} szczegoly={szczegoly[key]} />;
+                    } else {
+                        return (
+                            <li className={styles.szczegoly} key={index}>
+                                <div>{key}</div>
+                                <div>{szczegoly[key]}</div>
+                            </li>
+                        );
+                    }
+                })}
+            </>
+        );
+    return null
 }
 
 export default ItemsSite;

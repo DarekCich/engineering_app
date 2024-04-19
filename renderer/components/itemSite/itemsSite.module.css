@@ -10,8 +10,8 @@
 .fileList {
     box-sizing: border-box;
     width: 100%;
-    height: 40%;
-    background: --file-list-color;
+    height: 60%;
+    background: var(--file-list-color);
     border: solid 2px #858585;
     border-radius: 15px
 }
@@ -20,13 +20,31 @@
 
     box-sizing: border-box;
     width: 100%;
-    height: 50%;
+    height: 35%;
     background: var(--file-list-color);
     border: solid 2px #858585;
     border-radius: 15px;
     display: flex;
-    overflow: hidden;
+    overflow-y: scroll;
+    padding-left: 0.25rem;
+    padding-bottom: 0.25rem;
 }
+.fileDetails::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    /* Szerokość paska przewijania */
+    appearance: none;
+}
+
+.fileDetails::-webkit-scrollbar-thumb {
+    background-color: #818181af;
+    /* Kolor paska przewijania */
+    -webkit-appearance: none;
+    border-radius: 5px;
+    /* Zaokrąglenie paska przewijania */
+    appearance: none;
+}
+
 
 .fileDetail {
     box-sizing: border-box;
@@ -41,6 +59,8 @@
     width: 50%;
     border-right: solid 2px #858585;
 }
+
+
 
 @media only screen and (max-width: 800px) {
 
@@ -63,17 +83,16 @@
     .fileDetails {
         box-sizing: border-box;
         width: 100%;
-        height: 50%;
+        height: 40%;
         background: var(--file-list-color);
         border-radius: 15px;
         display: flex;
-        overflow: hidden;
     }
 
     .fileDetail {
         box-sizing: border-box;
         height: 100%;
-        width: 50%;
+        width: 45%;
     }
 
     .fileView {
@@ -84,4 +103,16 @@
         border-right: solid 2px #858585;
     }
 
+}
+
+.szczegoly{
+    display: flex;
+    color: var( --folder-font-color);
+    justify-content: space-between;
+}
+.detailUl{
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 1rem;
+    padding-left: 1rem;
 }
