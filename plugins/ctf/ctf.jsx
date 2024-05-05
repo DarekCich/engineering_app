@@ -26,7 +26,6 @@ const RichTextEditor = ({file, save}) => {
                 <ReactQuill
                     value={text}
                     onChange={handleChange}
-                    theme="snow"
                     className={styles.qlContainer}
                 />
             </div>

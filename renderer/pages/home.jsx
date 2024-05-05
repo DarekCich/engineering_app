@@ -51,13 +51,16 @@ function Home() {
                         onClick={() => setActualPage(-1)}
                         className={styles.mainMenu + " " + styles.reverse}
                     />
-                    <input
-                        type="checkbox"
-                        id="check"
-                        className="toggle"
-                        onChange={() => setIsDark(!isDark)}
-                        checked={isDark}
-                    />
+                    <div className="checkbox-wrapper-3">
+                        <input
+                            type="checkbox"
+                            id="cbx-3"
+                            className="toggle"
+                            onChange={() => setIsDark(!isDark)}
+                            checked={isDark}
+                        />
+                        <label htmlFor="cbx-3" className="toggle"><span></span></label>
+                    </div>
                     {paths.map((x, index) => (
                         <div className={styles.tab} key={index} onClick={() => setActualPage(x)}>
                             {x.includes("//")? x.split("//")[0] : x}
