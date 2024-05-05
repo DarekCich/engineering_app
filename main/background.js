@@ -3,7 +3,7 @@ import serve from "electron-serve";
 import { createWindow } from "./helpers";
 
 const isProd = process.env.NODE_ENV === "production";
-app.disableHardwareAcceleration();
+// app.disableHardwareAcceleration();
 if (isProd) {
     serve({ directory: "app" });
 } else {

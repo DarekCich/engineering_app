@@ -35,6 +35,13 @@
 
     --folder-font-color: #1d1d1d;
 }
+.ql-snow .ql-stroke {
+    fill: none;
+    stroke: var(--folder-font-color);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+}
 
 .quill {
     box-sizing: border-box;

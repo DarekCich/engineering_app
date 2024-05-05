@@ -17,15 +17,24 @@ function FileList({
     const [reload, setReload] = useState(false);
 
     const newFile = async () => {
-        if(pathClicked.includes("@SERVER")){
-            setBubbleMessage("Nie można tworzyć plików w zasobach sieciowych.")
-            return
+        if (!pathClicked) {
+            setBubbleMessage("Wybierz folder.");
+            return;
+        }
+
+        if (pathClicked.includes("@SERVER")) {
+            setBubbleMessage("Nie można tworzyć plików w zasobach sieciowych.");
+            return;
         }
         let tmp = pathClicked + "/newFile";
         await fileCreate(tmp);
         tmp = fileListOfFiles(pathClicked);
         if (tmp[0] === -1 || tmp[0] === -2) {
             return;
+        }
+        const element = tmp.find((item) => !fileList.includes(item));
+        if (element !== undefined) {
+            setFileClicked(element);
         }
         setfileList(tmp);
     };
@@ -42,9 +51,12 @@ function FileList({
                 : "http://localhost:8000/api/sharedfiles/shared_file_to_me/";
         try {
             const axios = require("axios"); // Importujemy axios tutaj
-            const response = await axios.get(url,{
+            const response = await axios.get(url, {
                 headers: {
-                    Authorization: typeof localStorage !== "undefined" ? localStorage.getItem("djangoToken"):null,
+                    Authorization:
+                        typeof localStorage !== "undefined"
+                            ? localStorage.getItem("djangoToken")
+                            : null,
                 },
             });
             tmp = response.data;
