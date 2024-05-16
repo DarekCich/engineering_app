@@ -59,11 +59,15 @@ function FileList({
                             : null,
                 },
             });
+            console.log(response.data);
             tmp = response.data;
             setfileList(tmp);
             setFileClicked("");
         } catch (error) {
             console.error("Błąd podczas pobierania plików z serwera:", error);
+        } finally{
+            setfileList(tmp);
+            setFileClicked("");
         }
     };
 
@@ -137,6 +141,7 @@ function FileList({
                                   shared={pathClicked === "@SERVERSHARED@"}
                                   path={String(x.id)}
                                   dane={pathClicked !== "@SERVERSHARED@" ? x : x.file}
+                                  danePelne={x}
                                   key={index}
                                   pathClicked={pathClicked}
                                   setReload={changeReload}

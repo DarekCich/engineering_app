@@ -8,8 +8,7 @@
 }
 
 .frame {
-    height: 80vh;
-    width: 90%;
-    background-color: aliceblue;
+    height: 85vh;
+    width: 95%;
     border-radius: var(--curve_high);
 }

@@ -10,12 +10,12 @@ function MenuPage({ setUserLogin }) {
     };
     return (
         <div className={styles.menu}>
-            menu
             <button onClick={onClick}>wyloguj</button>
             <webview
                 className={styles.frame}
                 src="http://127.0.0.1:8000/website/filespublic/"
-            />
+                sandbox="allow-same-origin allow-forms allow-scripts"
+            ></webview>
         </div>
     );
 }

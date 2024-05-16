@@ -8,6 +8,7 @@ function FileServer({
     shared,
     path,
     dane,
+    danePelne,
     pathClicked,
     setReload,
     setFileClicked,
@@ -42,11 +43,21 @@ function FileServer({
     const handleAddToPages = () => {
         addToPages(nazwa + "//" + path + "//" + (shared ? "sh" : "my"));
     };
-    const deleteFile = () => {
-        if (shared) axios.delete(`http://127.0.0.1:8000/api/sharedfiles/${dane.id}/`);
-        else axios.delete(`http://127.0.0.1:8000/api/files/${dane.id}/`);
-        setReload();
+    const deleteFile = async () => {
+        try {
+            if (shared) {
+                console.log(danePelne);
+                await axios.delete(`http://127.0.0.1:8000/api/sharedfiles/${danePelne.id}/`);
+            } else {
+                await axios.delete(`http://127.0.0.1:8000/api/files/${dane.id}/`);
+            }
+        } catch (error) {
+            console.error('Error deleting file:', error);
+        } finally {
+            setReload();
+        }
     };
+    
 
     useEffect(() => {
         if (fileClicked !== path && rename) {
