@@ -20,8 +20,7 @@ const RichTextEditor = ({file, save}) => {
 
     return (
         <div className={styles.richTextEditorContainer}>
-            <button onClick={handleSave}>save</button>
-            <h1 className={styles.richTextEditorHeader}>Rich Text Editor</h1>
+            <button className={styles.but} onClick={handleSave}>save</button>
             <div className={styles.editor}>
                 <ReactQuill
                     value={text}

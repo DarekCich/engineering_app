@@ -2,6 +2,9 @@
 
 /* Stylizacja kontenera komponentu */
 .richTextEditorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   padding: 20px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -13,9 +16,22 @@
 
 /* Stylizacja nagłówka edytora */
 .richTextEditorHeader {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 .editor{
+width: 100%;
   height: 70%;
   background-color: var(--file-list-color);
+}
+.but{
+    font-size: 1.5rem;
+    width: 40%;
+    background-color: var(--file-list-color);
+    margin-bottom: 4px;
+}
+.but:hover{
+    background-color: var(--tab-hover-color);
+}
+.but:active {
+    transform: translateY(4px);
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./login.module.css";
 import axios from "axios";
 
@@ -50,32 +50,35 @@ function LoginPage({ setUserLogin, setBubbleMessage }) {
                 });
         }
     };
-    if (typeof localStorage !== "undefined") {
-        if (localStorage.getItem("djangoToken")) {
-            console.log(localStorage.getItem("djangoToken"))
-            axios
-                .get('http://localhost:8000/api/files/', {
-                    headers: {
-                        Authorization: typeof localStorage !== "undefined" ? localStorage.getItem("djangoToken"):null,
-                    },
-                })
-                .then((response) => {
-                    if (response.status == 200) {
-                        axios.defaults.headers["Authorization"] = localStorage.getItem("djangoToken");
-                        setUserLogin(axios.defaults.headers["Authorization"]);
-                        setBubbleMessage("Zalogowano");
-                    } else if (response.status in (401, 403)) {
-                        setBubbleMessage("Zaloguj się ponownie");
+    useEffect(() => {
+        if (typeof localStorage !== "undefined") {
+            if (localStorage.getItem("djangoToken")) {
+                console.log(localStorage.getItem("djangoToken"))
+                axios
+                    .get('http://localhost:8000/api/files/', {
+                        headers: {
+                            Authorization: typeof localStorage !== "undefined" ? localStorage.getItem("djangoToken"):null,
+                        },
+                    })
+                    .then((response) => {
+                        if (response.status == 200) {
+                            axios.defaults.headers["Authorization"] = localStorage.getItem("djangoToken");
+                            setUserLogin(axios.defaults.headers["Authorization"]);
+                            setBubbleMessage("Zalogowano");
+                        } else if (response.status in (401, 403)) {
+                            setBubbleMessage("Zaloguj się ponownie");
+                            localStorage.setItem("djangoToken", "");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Błąd podczas wysyłania danych:", error);
                         localStorage.setItem("djangoToken", "");
-                    }
-                })
-                .catch((error) => {
-                    console.error("Błąd podczas wysyłania danych:", error);
-                    localStorage.setItem("djangoToken", "");
-                    setBubbleMessage("Błąd połączenia z serwerem");
-                });
+                        setBubbleMessage("Błąd połączenia z serwerem");
+                    });
+            }
         }
-    }
+    }, []);
+    
 
     return (
         <div className={styles.body}>

@@ -107,3 +107,14 @@
         flex-direction: column;
     }
 }
+.nav_but{
+    margin: 2px;
+    font-size: 1rem;
+    color: var( --folder-font-color);
+    font-weight: 600;
+    background: none;
+    border: none;
+}
+.nav_but:hover {
+    background-color: var(--tab-hover-color);
+}

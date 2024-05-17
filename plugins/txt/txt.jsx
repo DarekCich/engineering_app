@@ -13,11 +13,9 @@ const txt = ({ file, setFile, save }) => {
         setContent(file);
     }, [file]);
     return (
-        <div>
-            <div className={styles.editor}>
-                <button onClick={handleSave}>save</button>
-                <textarea className={styles.textarea} value={content} onChange={handleTextChange} />
-            </div>
+        <div className={styles.body}>
+            <button className={styles.but} onClick={handleSave}>save</button>
+            <textarea className={styles.textarea} value={content} onChange={handleTextChange} />
         </div>
     );
 };
